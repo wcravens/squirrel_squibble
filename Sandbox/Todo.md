@@ -2,10 +2,12 @@
 
 ## Design Concepts
 
-- Reduce DDD concepts into minimal Functional components 
+- Reduce DDD concepts into minimal Functional components
 - Decompose Layers and Components
 - Decompose Domain Business Logic, Event Sourcing and  Command Services
 - Generic Modularization of Codebase.  E.g. Domain should be separate from UI
+- Document / Identify expected Pure vs Impure Function Components
+  - Outer 'ring' of architecture contains all of the impure functions needed to provide interaction
 
 ## Proof of Concepts
 
@@ -21,4 +23,4 @@
     - Application Build ID from git commit hash
     - Application Metadata in JSON File (Name, BuildQuality, etc)
 - Event Store
-  - Eventual Consistancy
+  - Eventual Consistency
