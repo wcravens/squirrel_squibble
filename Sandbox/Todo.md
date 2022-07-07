@@ -30,8 +30,8 @@
 - Download Document Markdown
 - Download Document HTML
 - Testing Framework
-  - [Jest](https://jestjs.io/docs/en/getting-started)
-  - 
+  - [Jest](https://jestjs.io/docs/en/getting-started) for React App
+  - Mocha + Chai for Domain Modules 
 
 
 ## Bundling (i.e. [Webpack](https://webpack.js.org/))
