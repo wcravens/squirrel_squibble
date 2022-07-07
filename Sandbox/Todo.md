@@ -29,7 +29,14 @@
 - Download Document State ""
 - Download Document Markdown
 - Download Document HTML
+- Testing Framework
+  - [Jest](https://jestjs.io/docs/en/getting-started)
+  - 
 
 
-## application-metadata
+## Bundling (i.e. [Webpack](https://webpack.js.org/))
+
+- Bundle Application Metadata
+  - application_name, version, build_quality, build_id (current git commit hash)
+
 
