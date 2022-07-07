@@ -1,0 +1,9 @@
+# JetBrains
+.idea
+
+# Vim
+*.swp
+*.swo
+
+# Npm
+node_modules
