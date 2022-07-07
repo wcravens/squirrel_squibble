@@ -17,3 +17,8 @@
 - JSON Schema definitions
 - JSON Schema validator
 - Messaging Subsystem; Conceptual Design and Implementation details
+- Render Application Information in Footer
+    - Application Build ID from git commit hash
+    - Application Metadata in JSON File (Name, BuildQuality, etc)
+- Event Store
+  - Eventual Consistancy
