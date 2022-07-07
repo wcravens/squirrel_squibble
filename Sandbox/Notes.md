@@ -8,8 +8,11 @@ No warranty on the usefulness of suitability of the following scrabble...
 
 Unit Test: A unit test is an automated test that tests a unit in isolation from its dependencies.
 
+## Testing
 
+Mocha + Chai + [Enzyme](https://enzymejs.github.io/enzyme/)
+[Jest; is good for React Apps](https://jestjs.io/)\
 
+## Asynchronous Behavior
 
-
-
+[async/await pattern](https://javascript.info/async-await)\

@@ -30,9 +30,14 @@
 - Download Document Markdown
 - Download Document HTML
 - Testing Framework
-  - [Jest](https://jestjs.io/docs/en/getting-started)
-  - 
+  - [Jest](https://jestjs.io/docs/en/getting-started) for React App
+  - Mocha + Chai for Domain Modules
+- Dynamic analysis with [Flame Graphs](https://nodejs.org/en/docs/guides/diagnostics-flamegraph/)
+- [PouchDB](https://github.com/pouchdb/pouchdb)
+- Containerize
 
+## Development Tools
+- ESLint
 
 ## Bundling (i.e. [Webpack](https://webpack.js.org/))
 
