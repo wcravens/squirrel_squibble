@@ -31,7 +31,8 @@
 - Download Document HTML
 - Testing Framework
   - [Jest](https://jestjs.io/docs/en/getting-started) for React App
-  - Mocha + Chai for Domain Modules 
+  - Mocha + Chai for Domain Modules
+- Dynamic analysis with [Flame Graphs](https://nodejs.org/en/docs/guides/diagnostics-flamegraph/)
 
 
 ## Bundling (i.e. [Webpack](https://webpack.js.org/))
