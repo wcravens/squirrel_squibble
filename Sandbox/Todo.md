@@ -24,3 +24,12 @@
     - Application Metadata in JSON File (Name, BuildQuality, etc)
 - Event Store
   - Eventual Consistency
+- Memoization in Repository Persistence functionality
+- Download Application State as an ASCII JSON document
+- Download Document State ""
+- Download Document Markdown
+- Download Document HTML
+
+
+## application-metadata
+
