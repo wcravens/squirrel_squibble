@@ -89,6 +89,17 @@ IO boundary use immutable data and pure functions.
 
 [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
 
+
+## Testing
+
+Mocha + Chai + [Enzyme](https://enzymejs.github.io/enzyme/)
+[Jest; is good for React Apps](https://jestjs.io/)\
+
+## Asynchronous Behavior
+
+[async/await pattern](https://javascript.info/async-await)\
+
+
 ## Scratchy References
 
 [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)\
