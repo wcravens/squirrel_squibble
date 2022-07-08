@@ -73,7 +73,8 @@ IO boundary use immutable data and pure functions.
 
 ## TDD / Testing Framework/s
 
-Mocha Chai vs Jest
+[Jest](https://jestjs.io/docs/getting-started) is good for browser side react apps.
+[Mocha](https://mochajs.org/) with [Chai](https://www.chaijs.com/) are good for Node.js apps.
 
 ## Javascript Modules
 
