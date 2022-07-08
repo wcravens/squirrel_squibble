@@ -85,6 +85,9 @@ IO boundary use immutable data and pure functions.
     npx create-react-app browser_client --template minimal
     cd browser_client; npm install bootstrap@5.2.0-beta1
 
+## Storage
+
+[Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
 
 ## Scratchy References
 

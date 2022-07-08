@@ -4,8 +4,7 @@
 
 - Reduce DDD concepts into minimal Functional components
 - Decompose Layers and Components
-- Decompose Domain Business Logic, Event Sourcing and  Command Services
-- Generic Modularization of Codebase.  E.g. Domain should be separate from UI
+- Decompose Domain Business Logic, Event Sourcing and Command Services
 - Document / Identify expected Pure vs Impure Function Components
   - Outer 'ring' of architecture contains all of the impure functions needed to provide interaction
 
