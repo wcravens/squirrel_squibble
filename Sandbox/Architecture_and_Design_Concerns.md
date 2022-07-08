@@ -83,5 +83,6 @@ IO boundary use immutable data and pure functions.
 
 ## Scratchy References
 
+[Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 [IBM / RedHat Node.js Reference Architecture](https://github.com/nodeshift/nodejs-reference-architecture)\
 [Asynchronous Javascript: From Promises to Async/Await](https://scoutapm.com/blog/async-javascript)
