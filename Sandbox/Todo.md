@@ -1,5 +1,16 @@
 # Trying to organize some todo lists
 
+## Currently
+
+Register Application and Create a Store
+  - Explore PouchDB API and Paradigms
+  - Load PouchDB if appropriate
+  - Test for Application Store, we know this will fail.
+  - Register the Application
+  - Initialize Storage
+  - Store App Registration Info
+  - Pass to Registration Screen
+
 ## Design Concepts
 
 - Reduce DDD concepts into minimal Functional components
