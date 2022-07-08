@@ -9,7 +9,7 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
     <hr/>
-    <pre>Squirrel Squibble Build: {process.env.REACT_APP_BRANCH} {process.env.REACT_APP_VERSION}</pre>
+    <pre>{process.env.REACT_APP_NAME} {process.env.REACT_APP_VERSION} Build: {process.env.REACT_APP_BRANCH} {process.env.REACT_APP_BUILD}</pre>
   </React.StrictMode>,
   document.getElementById('root')
 );
