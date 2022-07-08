@@ -80,6 +80,11 @@ IO boundary use immutable data and pure functions.
 
 [ECMA Script Modules](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#modules-ecmascript-modules)
 
+## Browser Client Boilerplate/s
+
+    npx create-react-app browser_client --template minimal
+    cd browser_client; npm install bootstrap@5.2.0-beta1
+
 
 ## Scratchy References
 
