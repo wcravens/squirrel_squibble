@@ -11,6 +11,7 @@
 
 ## Proof of Concepts
 
+- Events to Console
 - LocalStorage in Node.js
 - JSON Schema Validation
 - Immutability
@@ -34,8 +35,9 @@
   - Mocha + Chai for Domain Modules
 - Dynamic analysis with [Flame Graphs](https://nodejs.org/en/docs/guides/diagnostics-flamegraph/)
 - [PouchDB](https://github.com/pouchdb/pouchdb)
-- Containerize
-
+- Containerized Server
+- View Router
+ 
 ## Development Tools
 - ESLint
 
