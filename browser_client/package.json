@@ -11,7 +11,7 @@
   },
   "scripts": {
     "bootstrap": "markserv bootstrap-5.2.0-beta1-examples",
-    "start": "export REACT_APP_NAME='Squirrel Squibble' && export REACT_APP_VERSION='Pre-Alpha 0' && export REACT_APP_BRANCH=$(git branch)  && export REACT_APP_BUILD=$(git rev-parse --short HEAD) && react-scripts start",
+    "start": "export REACT_APP_NAME='Squirrel Squibble' && export REACT_APP_VERSION='Pre-Alpha 0' && export REACT_APP_BRANCH=$(git branch --show-current)  && export REACT_APP_BUILD=$(git rev-parse --short HEAD) && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

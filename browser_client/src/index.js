@@ -5,11 +5,18 @@ import App from './App';
 import './custom.scss';
 
 console.log( "Build: " + process.env.REACT_APP_BRANCH + ":"  + process.env.REACT_APP_VERSION )
+const AppInfo = {
+  name: process.env.REACT_APP_NAME,
+  version: process.env.REACT_APP_VERSION,
+  branch: process.env.REACT_APP_BRANCH,
+  build: process.env.REACT_APP_BUILD
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
     <hr/>
-    <pre>{process.env.REACT_APP_NAME} {process.env.REACT_APP_VERSION} Build: {process.env.REACT_APP_BRANCH} {process.env.REACT_APP_BUILD}</pre>
+    <pre>{AppInfo.name} {AppInfo.version}, {AppInfo.branch} Build: {AppInfo.build}</pre>
   </React.StrictMode>,
   document.getElementById('root')
 );
