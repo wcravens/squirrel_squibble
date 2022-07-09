@@ -11,6 +11,8 @@ concepts and Event Sourcing.
 
 [ES Modules a Cartoon Deep Dive](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/)
 
+[Replacing Javascript Classes with the Module Design Pattern](https://dev.to/bytebodger/replacing-javascript-classes-with-the-module-design-pattern-48bl)
+
 The ES Modules spec defines how an implementation should read parse files into module records and how you should
 instantiate and evalute that Module.  However it says nothing about hot to get the file in the first place.
 

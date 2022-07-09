@@ -1,0 +1,15 @@
+{
+  "name": "nodejs_client",
+  "version": "0.0.1",
+  "description": "nodejs_client for exercising our application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Wes Cravens",
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^8.3.2"
+  }
+}
