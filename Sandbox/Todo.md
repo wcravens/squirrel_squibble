@@ -27,6 +27,8 @@ Register Application and Create a Store
 - LocalStorage in Node.js
 - Document Store with 'LocalStorage' API
 
+- Config File/ Immutable CONFIG
+
 ### Repository
 
 - JSON Schema Validation
