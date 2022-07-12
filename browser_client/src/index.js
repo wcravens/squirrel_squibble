@@ -17,6 +17,6 @@ root.render(
   <React.StrictMode>
     <App />
     <hr/>
-    <pre style={{"font-size": "x-small"}}>{AppInfo.name} {AppInfo.version}, {AppInfo.branch} Build: {AppInfo.build}</pre>
+    <pre style={{"fontSize": "x-small"}}>{AppInfo.name} {AppInfo.version}, {AppInfo.branch} Build: {AppInfo.build}</pre>
   </React.StrictMode>,
 );
