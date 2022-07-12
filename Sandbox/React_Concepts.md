@@ -120,7 +120,7 @@ setInterval(tick, 1000);
 Check the ticking clock example in the developer tools. Even though the code updates the whole React element every time,
 you'll see that only the relevant text content changes, the reset of the DOM is not affected.
 
-## Components
+## Components and Props
 
 Components let you split the UI into independent, reusable pieces, and think about each piece in isolation.
 
@@ -166,8 +166,6 @@ but `<Welcome />` represents a component and requires Welcome to be in scope.
 these should be two different components.
 
 - ***Warning: All React components must act like pure functions with respect to their props.***
-
-***See decomposition in Squirrel.js.***
 
 ## State and Lifecycle of a Component
 
