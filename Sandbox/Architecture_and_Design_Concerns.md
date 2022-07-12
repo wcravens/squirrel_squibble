@@ -11,6 +11,8 @@ concepts and Event Sourcing.
 
 [ES Modules a Cartoon Deep Dive](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/)
 
+[Replacing Javascript Classes with the Module Design Pattern](https://dev.to/bytebodger/replacing-javascript-classes-with-the-module-design-pattern-48bl)
+
 The ES Modules spec defines how an implementation should read parse files into module records and how you should
 instantiate and evalute that Module.  However it says nothing about hot to get the file in the first place.
 
@@ -50,12 +52,19 @@ Consumers...
 
 Package by Layer is Horizontal Slicing.  Consider packaging by Component to provide Vertical Slicing.
 
+[Clean Architecture: The Bad Parts](https://www.jamesmichaelhickey.com/clean-architecture/)
+
 [Package by Component](http://www.codingthearchitecture.com/2015/03/08/package_by_component_and_architecturally_aligned_testing.html)
+
+After consideration this isn't an idea fit for us.  It's better to have 'ways of doing things' per layer than per slice.
+
 
 [Google Javascript Style Guide](https://google.github.io/styleguide/jsguide.html)\
 [AirBnB JavaScript Style Guide](https://github.com/airbnb/javascript)
 
 [Domain Driven Design for Javascript Developers](https://medium.com/spotlight-on-javascript/domain-driven-design-for-javascript-developers-9fc3f681931a)
+
+
 
 ## JSON Schema
 
