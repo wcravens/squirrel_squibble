@@ -49,7 +49,7 @@ element =
     "$$typeof": Symbol(react.element),
     "type": "h1",
     "key": null,
-    "ref": null,k
+    "ref": null,
     "props": {
         "className": "greeting",
         "children": "Hello, world!"
