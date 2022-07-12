@@ -22,16 +22,22 @@ Register Application and Create a Store
 ## Proof of Concepts
 
 - Events to Console
-- LocalStorage in Node.js
-- JSON Schema Validation
 - Immutability
 - Pub/Sub Brokers
+- LocalStorage in Node.js
 - Document Store with 'LocalStorage' API
-- JSON Schema definitions
-- JSON Schema validator
-- Messaging Subsystem; Conceptual Design and Implementation details
-- Event Store
-  - Eventual Consistency
+
+### Repository
+
+- JSON Schema Validation
+- definitions
+- versioning
+- validator
+
+- Eventual Consistency
+- MVCC
+
+
 - Memoization in Repository Persistence functionality
 - Download Application State as an ASCII JSON document
 - Download Document State ""
