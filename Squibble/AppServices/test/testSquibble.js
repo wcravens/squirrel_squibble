@@ -1,4 +1,4 @@
-import assert from 'assert';
+
 
 describe('Array', function () {
   describe('#indexOf()', function () {
