@@ -1,0 +1,12 @@
+{
+  "name": "squibble",
+  "version": "0.0.1",
+  "description": "Squibbler fast document editor. Vim inspired, web powered.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Wes Cravens",
+  "license": "MIT"
+}
