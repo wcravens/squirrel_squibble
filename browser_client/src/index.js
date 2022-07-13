@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client'
 import App from './App';
-import './custom.scss';
+//import './custom.scss';
 
 const AppInfo = {
   name: process.env.REACT_APP_NAME,
