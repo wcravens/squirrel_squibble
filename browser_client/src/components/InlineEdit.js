@@ -4,7 +4,7 @@ import './InlineEdit.css'
 const InlineEdit = ({ defaultValue }) => {
   const [ value, setValue ] = useState( '' );
   const [ pure, setPure ] = useState( true )
-  const onFocus   = event => { if (pure) { setValue(''); setPure( false ) }; console.log( event ) };
+  //const onFocus   = event => { if (pure) { setValue(''); setPure( false ) } };
   const onChange  = event => setValue( event.target.value )
   const onKeyDown = event => { if ( event.key === "Enter" || event.key === "Escape" ) { event.target.blur(); } }
 
@@ -13,7 +13,8 @@ const InlineEdit = ({ defaultValue }) => {
       type = "text"
       aria-label = "Field name"
       value = { pure ? defaultValue : value }
-      onFocus   = { onFocus }
+      className = { 'pure' }
+      //onFocus   = { onFocus }
       onChange  = { onChange }
       onKeyDown = { onKeyDown }
     />

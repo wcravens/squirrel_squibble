@@ -2,9 +2,19 @@ input {
     background-color: transparent;
     border: 0;
     padding: 8px;
+    color: #000;
+}
+
+input.pure {
+    color: #bbb;
 }
 
 input:hover {
     background-color: #d3d3d3;
     cursor: pointer;
 }
+
+input:focus-visible {
+    color: #000;
+}
+
