@@ -1,15 +1,21 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client'
+import md5 from 'md5'
 import App from './App';
+import ClientInfo from './components/ClientInfo'
 //import './custom.scss';
 
-const AppInfo = {
-  name: process.env.REACT_APP_NAME,
-  version: process.env.REACT_APP_VERSION,
-  branch: process.env.REACT_APP_BRANCH,
-  build: process.env.REACT_APP_BUILD
+const config = {
+  name: 'Squibble Web Client',
+  semver: '0.0.1',
+  "pre_release": 'pre-alpha 0',
+  "build": process.env.REACT_APP_BUILD_ID
 }
-console.log( "AppInfo:" + JSON.stringify( AppInfo ) )
+
+const CONFIG = Object.freeze( { client: {
+  "id": md5( config.name + config.build ),
+  ...config
+}})
 
 const container = document.getElementById( 'root' )
 const root = createRoot( container )
@@ -17,6 +23,6 @@ root.render(
   <React.StrictMode>
     <App />
     <hr/>
-    <pre style={{"fontSize": "x-small"}}>{AppInfo.name} {AppInfo.version}, {AppInfo.branch} Build: {AppInfo.build}</pre>
+    <ClientInfo {...CONFIG } />
   </React.StrictMode>,
 );

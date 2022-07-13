@@ -282,5 +282,7 @@ React runs the effects after every render.
 
 Effects may also optionally specify how to “clean up” after them by returning a function.  This function will run when the component unmounts.
 
+## Environment Variables
 
-
+**NOTE:** Environment Variables must start with 'REACT_APP_' and you must export them from the start scripts in
+package.json.
