@@ -9,6 +9,7 @@ export default {
   args: {
     //👇 All Button stories will be primary by default
     defaultValue: "Edit me...",
+    type: "input"
   },
 }
 
