@@ -1,7 +1,7 @@
 textarea {
     /*resize: none;*/
     overflow: hidden;
-    min-hight: 14px;
+    min-height: 14px;
     max-height: 100px;
     background-color: transparent;
     border: 0;
