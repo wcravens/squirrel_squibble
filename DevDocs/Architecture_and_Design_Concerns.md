@@ -1,5 +1,25 @@
 # Architecture and Design Concerns
 
+## [Semantic Markup](https://developer.mozilla.org/en-US/docs/Glossary/Semantics)
+
+[Content Sectioning](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#content_sectioning)
+
+```html
+<main/>
+<article/>
+<section/>
+<header/>
+<footer/>
+<summary/>
+```
+
+## Inline Editing
+
+[How to build an inline edit component in React](https://www.emgoto.com/react-inline-edit/)
+
+
+## Code Style
+
 As much as possible we would like to extract the most poignant aspects from Domain Driven Design and OOP Patterns (
 see [Implementing Domain Driven Design](./Implementing_Domain_Driven_Design.md) but then mix with Functional Programming
 concepts and Event Sourcing.
