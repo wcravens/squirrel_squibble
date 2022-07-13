@@ -13,7 +13,7 @@ const config = {
 }
 
 const CONFIG = Object.freeze( { client: {
-  "id": md5( config.name + config.build ),
+  "id": 'squibble_' + md5( config.name + config.build ),
   ...config
 }})
 
