@@ -248,4 +248,39 @@ reference guide](https://reactjs.org/docs/events.html) to learn more.
 ## Conditional Rendering
 
 
+## [Hooks](https://reactjs.org/docs/hooks-reference.html)
+
+### State Hook
+
+`useState` returns a pair: the current state value and a function that lets you update it. You can declare multiple
+state variables.
+
+```js
+function ExampleWithManyStates() {
+  // Declare multiple state variables!
+  const [age, setAge] = useState(42);
+  const [fruit, setFruit] = useState('banana');
+  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+  // ...
+}
+```
+
+The array destructuring syntax lets us give different names to the state variables we declared by calling useState.
+
+Hooks are functions that let you “hook into” React state and lifecycle features from function components.
+
+You can create your own Hooks to reuse stateful behavior between different components.
+
+There are many [Built-in hooks](https://reactjs.org/docs/hooks-reference.html)
+
+### Effect Hook
+
+`useEffect` adds the ability to perform side effects from a function component.   
+
+When you call `useEffect`, you’re telling React to run your “effect” function after flushing changes to the DOM. I.e.
+React runs the effects after every render.
+
+Effects may also optionally specify how to “clean up” after them by returning a function.  This function will run when the component unmounts.
+
+
 
