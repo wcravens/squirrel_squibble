@@ -1,20 +1,19 @@
-input {
+.InlineEdit {
     background-color: transparent;
     border: 0;
     padding: 8px;
     color: #000;
 }
 
-input.pure {
+.InlineEdit.pure {
     color: #bbb;
 }
 
-input:hover {
+.InlineEdit:hover {
     background-color: #d3d3d3;
     cursor: pointer;
 }
 
-input:focus-visible {
+.InlineEdit:focus-visible {
     color: #000;
 }
-

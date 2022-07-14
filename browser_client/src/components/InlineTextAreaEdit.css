@@ -1,0 +1,7 @@
+textarea.InlineEdit {
+    /*resize: none;*/
+    overflow: hidden;
+    min-hight: 14px;
+    max-height: 100px;
+    font-family: 'Arial'
+}
