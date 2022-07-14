@@ -2,61 +2,96 @@ import PACKAGE from './package.json';
 import md5 from 'md5'
 import * as PubSub from 'pubsub-js'
 import PouchDB from 'pouchdb'
-import {INFO, DATASTORE, EVENT, COMMAND} from './event-types.js'
-let DataStore;
+import {INFO, DATASTORE, EVENT, COMMAND, APPSTATE, ERROR} from './event-types.js'
+import demoAppFixture from '../Squibble_Browser_Client/src/fixtures/Example_Document_Outline.js'
 
-const publish = (topic, msg) => {
-  PubSub.publish( topic, new Date().toISOString() + " " + msg )
+window.addEventListener("unhandledrejection", event => console.warn(`UNHANDLED PROMISE REJECTION: ${event.reason}`) )
+
+const publish = (topic, message  ) => {
+  console.log( message )
+  /*
+  if( typeof( obj ) != 'object' ) {
+    obj = { msg: obj }
+  }
+  obj.date = new Date().toISOString()
+   */
+  //PubSub.publish( topic, stringify( obj ) )
 }
-const config = {
-    name:           PACKAGE.Name,
-    semver:         PACKAGE.version,
-    "pre_release":  PACKAGE.pre_release,
-    "build": process.env.REACT_APP_BUILD_ID
-}
+
+const errFields = ( err ) => { return err }
+/*
+  (({date, status, name, message, reason, docId }) =>
+    ({date, status, name, message, reason, docId } ))( err )
+
+ */
 
 const CONFIG = Object.freeze( {
-        "id": 'squibble_' + md5( config.name + config.build ),
-        ...config
-    })
-
-export const subscribeToInfo = ( f ) => { PubSub.subscribe( INFO, f ) }
-export const subscsribeToStore = ( f ) => { PubSub.subscribe( STORE, f ) }
-
-PubSub.subscribeAll( console.log )
+  name:           PACKAGE.Name,
+  semver:         PACKAGE.version,
+  "pre_release":  PACKAGE.pre_release,
+  "build": process.env.REACT_APP_BUILD_ID
+} )
 
 const useHeartBeat = ( delay ) => {
     setInterval( ()=> { publish( INFO, 'HeartBeat' ) }, 1000 * delay );
 }
 
-export const init = async () => {
-  publish( DATASTORE, 'Connecting Local: ' + CONFIG.id )
-  DataStore = new PouchDB( CONFIG.id )
-  publish( DATASTORE, 'DataStore Ready: ' + CONFIG.id );
-  publish( INFO, 'DataStore initialized.' );
+const initDocumentStore = ( id, doc, store ) =>
+  Promise.all(
+    [store.get( id )
+      .then( doc => doc )
+      .catch( err => ( err.name !== 'not_found' )
+        ? publish( ERROR, errFields( err ) )
+        : null
+    ),
+    store.put( { _id: id, ...doc, date: new Date().toISOString() } )
+      .then( res => res )
+      .then( doc => doc )
+      .catch( err => publish( ERROR, errFields( err ) ) )
+    ]).then( doc => doc )
+
+const flushDataStore = (datastoreId) => new PouchDB( datastoreId ).destroy( datastoreId )
+
+const initDataStore = async ( datastoreId ) => {
+  const db = new PouchDB( datastoreId )
+  publish( DATASTORE, 'Connecting Local: ' + datastoreId )
+  publish( DATASTORE, 'DataStore Ready: ' + datastoreId );
+  return db
 }
 
-let AppConfig;
+export const subscribeToInfo     = ( f ) => { PubSub.subscribe( INFO, f ) }
+export const subscribeToAppState = ( f ) => { PubSub.subscribe( APPSTATE, f ) }
 
-export const register = ( client, options ) => {
-  publish( INFO, `Starting ${CONFIG.name}.`)
-  if ( options.useHeartbeat > 0 ) {
-    useHeartBeat(options.useHeartbeat );
+export const appInit = async ( client ) => {
+  //PubSub.subscribeAll( console.log )
+  const startMessage = "Start Squibble Application"
+  console.log( startMessage + " " + new Date().toISOString() )
+  publish( INFO, startMessage )
+  const appId = 'squibble_' + md5( CONFIG.name + CONFIG.build );
+  const clientId = 'squibble_' + md5( client.name = client.build )
+  const defaultAppConfig = {
+    type: 'AppConfig',
+    AppConfig: {
+      application: { id: appId, ...CONFIG },
+      client: { id: clientId, ...client }
+    },
+    date: new Date().toISOString()
   }
-  publish( INFO, `Registered Client: ${client.name}` )
-  publish( INFO, 'Client: '            + JSON.stringify( client ) )
-  publish( INFO, 'Client Options: '    + JSON.stringify( options ) )
-  init()
-  DataStore.get( 'AppConfig' ).then( (doc) => {
-    AppConfig = doc
-    publish( INFO, 'Fetched AppConfig.' + JSON.stringify( AppConfig ) )
-  }).catch( err => {
-    if ( err.name !== 'not_found' ) {
-      return publish( INFO, 'Error getting AppConfig: ' + err )
-    }
-    DataStore.put( { _id: 'AppConfig', application: CONFIG, client: client } ).then( (doc) => {
-      publish( DATASTORE, 'Successfully stored: ' + JSON.stringify( doc ) )
-    } ).catch( err => publish( DATASTORE, "Error storing initial AppConfig. " + err ) )
-  } )
-  return CONFIG
+  const defaultAppState = {
+    type: 'AppState',
+    config: { client: client, application: defaultAppConfig },
+    appState: { document: demoAppFixture },
+    date: new Date().toISOString()
+  }
+
+  try {
+    const dataStore = await initDataStore( defaultAppConfig.AppConfig.client.id );
+    const appConfig = await initDocumentStore( 'AppConfig', defaultAppConfig, dataStore )
+    const appState  = await initDocumentStore( 'AppState',  defaultAppState,  dataStore )
+    publish( APPSTATE, appConfig )
+    publish( APPSTATE, appState )
+  } catch ( err ) { publish( ERROR, errFields(err) ) }
+  useHeartBeat( 10 )
 }
+
+export default { }

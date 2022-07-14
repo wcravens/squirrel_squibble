@@ -1,4 +1,4 @@
-export default {
+const exampleDocumentOutline = {
   type: 'main',
   header: 'Distribute acorns across the Territory - Criteria Assessment (v1.9)',
   content: 'Secret program to bury nuts!',
@@ -91,3 +91,5 @@ export default {
     }
   ]
 }
+
+export default exampleDocumentOutline;
