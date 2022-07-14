@@ -1,5 +1,6 @@
 import PACKAGE from './package.json';
 import md5 from 'md5'
+import * as PubSub from 'pubsub-js'
 import {INFO} from './event-types.js'
 
 
@@ -16,13 +17,20 @@ const CONFIG = Object.freeze( {
     })
 
 export const subscribeToInfo = ( f ) => { PubSub.subscribe( INFO, f ) }
-const useHeartBeat = () => {
-    setInterval( ()=> { PubSub.publish( INFO, `HeartBeat ${new Date().toISOString()}`) }, 1000 );
-}
-export const run = () => {
-    useHeartBeat();
+
+PubSub.subscribe( INFO, console.log )
+
+const useHeartBeat = ( delay ) => {
+    //PubSub.publish( INFO, `HeartBeat ${new Date().toISOString()}`)
+    setInterval( ()=> { PubSub.publish( INFO, `HeartBeat ${new Date().toISOString()}`) }, 1000 * delay );
 }
 
-export const register = ( client ) => {
+export const register = ( client, options ) => {
+  PubSub.publish( INFO, 'Registered Client ' + new Date().toISOString() )
+  PubSub.publish( INFO, 'Client: ' + JSON.stringify( client ) )
+  PubSub.publish( INFO, 'Client Options: ' + JSON.stringify( options ) )
+  if ( options.useHeartbeat > 0 ) {
+    useHeartBeat(options.useHeartbeat );
+  }
   return CONFIG
 }

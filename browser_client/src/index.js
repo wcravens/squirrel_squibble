@@ -19,11 +19,10 @@ const CONFIG = Object.freeze( {
   ...config
 })
 
-const appConfig = Squibble.register( CONFIG.client )
-const clientConfig = CONFIG.client;
+Squibble.subscribeToInfo( console.log )
+const appConfig = Squibble.register( CONFIG, { useHeartbeat: 10 } )
 
 const container = document.getElementById( 'root' )
-
 const root = createRoot( container )
 root.render(
   <React.StrictMode>
