@@ -6,8 +6,8 @@
 
 ```html
 <main/>
-<article/>
 <section/>
+<article/>
 <header/>
 <footer/>
 <summary/>

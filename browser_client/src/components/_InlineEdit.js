@@ -4,7 +4,7 @@ import './_InlineEdit.css'
 const _InlineEdit = ( defaultValue ) => {
   const [ value, setValue ] = useState( '' );
   const [ pure, setPure ]   = useState( true );
-  const _onFocus   = event => { if (pure) { setValue(''); setPure( false ) } };
+  const _onFocus   = () => { if (pure) { setValue(''); setPure( false ) } };
   const _onChange  = event => setValue( event.target.value );
   const _onKeyDown = event => {
     if ( ( event.key === "Enter" && !event.shiftKey ) || event.key === "Escape" ) {
