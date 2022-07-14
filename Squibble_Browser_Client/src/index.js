@@ -19,7 +19,6 @@ const CONFIG = Object.freeze( {
   ...config
 })
 
-Squibble.subscribeToInfo( console.log )
 const appConfig = Squibble.register( CONFIG, { useHeartbeat: 10 } )
 
 const container = document.getElementById( 'root' )
