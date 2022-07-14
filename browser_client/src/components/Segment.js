@@ -1,23 +1,18 @@
 import React, {useState} from 'react'
-
+import './Segment.css'
 const Segment = ( props ) => {
-
   const nestedSegments = ( props.scion || [] ).map( seg => {
     return  <Segment { ...seg } />
   });
 
-  const styles = {
-    border: '1px solid blue',
-    marginLeft: '10px'
-  }
+  const SegmentType = props.type;
 
   return (
-    <article style={styles}  >
-      <pre>{ props.type }</pre>
+    <SegmentType className={'Segment'}>
       <header>{ props.header }</header>
       <p>{ props.content }</p>
       { nestedSegments }
-    </article>
+    </SegmentType>
   )
 }
 

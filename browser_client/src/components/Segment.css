@@ -1,0 +1,12 @@
+.Segment:hover {
+    background-color: #d3d3d3;
+    cursor: pointer;
+}
+
+.Segment:focus-visible {
+    color: #000;
+}
+
+.Segment:focus{
+    outline: 1px solid #bbb;
+}
