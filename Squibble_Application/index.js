@@ -8,14 +8,14 @@ import demoAppFixture from '../Squibble_Browser_Client/src/fixtures/Example_Docu
 window.addEventListener("unhandledrejection", event => console.warn(`UNHANDLED PROMISE REJECTION: ${event.reason}`) )
 
 const publish = (topic, message  ) => {
-  console.log( message )
+  //console.log( message )
   /*
   if( typeof( obj ) != 'object' ) {
     obj = { msg: obj }
   }
   obj.date = new Date().toISOString()
    */
-  //PubSub.publish( topic, stringify( obj ) )
+  PubSub.publish( topic, message )
 }
 
 const errFields = ( err ) => { return err }

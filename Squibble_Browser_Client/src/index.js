@@ -16,15 +16,13 @@ const CONFIG = {
 const container = document.getElementById( 'root' )
 const root = createRoot( container )
 
-const updateApp = ( msg, payload ) => {
-  console.log( payload )
-  const data = JSON.parse( payload ).msg
-  console.log ( data )
-  const newInfo = data[ data.type ]
+const updateApp = ( topic, message ) => {
+  console.log( message )
 }
-//subscribeToAppState( updateApp )
-//subscribeToAppState( console.log )
-//subscribeToInfo( console.log )
+
+subscribeToAppState( updateApp )
+subscribeToAppState( console.log )
+subscribeToInfo( console.log )
 
 appInit( CONFIG ).then( appConfig =>
   root.render(
