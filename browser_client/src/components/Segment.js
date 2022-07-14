@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
+
 import './Segment.css'
 const Segment = ( props ) => {
-  const nestedSegments = ( props.scion || [] ).map( seg => {
-    return  <Segment { ...seg } />
-  });
-
+  const nestedSegments = ( props.scion || [] ).map( seg => { return ( <Segment {...seg} /> ) } )
   const SegmentType = props.type;
 
   return (

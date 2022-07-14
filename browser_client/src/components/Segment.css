@@ -10,3 +10,18 @@
 .Segment:focus{
     outline: 1px solid #bbb;
 }
+
+main.Segment > header {
+    font-size: 2em;
+    font-weight: bold;
+
+}
+
+section.Segment > header {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+article.Segment > header {
+    font-weight: bold;
+}

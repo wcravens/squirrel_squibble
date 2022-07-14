@@ -4,7 +4,7 @@ export default {
   content: 'Secret program to bury nuts!',
   scion: [
     {
-      type: 'Section',
+      type: 'section',
       header: 'Business Context',
       content: '',
       scion: [
@@ -31,7 +31,7 @@ export default {
       ]
     },
     {
-      type: 'Section',
+      type: 'section',
       header: 'Decision Factors',
       content: '',
       scion: [
