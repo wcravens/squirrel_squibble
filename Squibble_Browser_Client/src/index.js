@@ -12,7 +12,6 @@ const CONFIG = {
   "pre_release":  PACKAGE.pre_release,
   "build":        process.env.REACT_APP_BUILD_ID
 }
-
 const container = document.getElementById( 'root' )
 const root = createRoot( container )
 
@@ -21,8 +20,8 @@ const updateApp = ( topic, message ) => {
 }
 
 subscribeToAppState( updateApp )
-subscribeToAppState( console.log )
-subscribeToInfo( console.log )
+//subscribeToAppState( console.log )
+//subscribeToInfo( console.log )
 
 appInit( CONFIG ).then( appConfig =>
   root.render(

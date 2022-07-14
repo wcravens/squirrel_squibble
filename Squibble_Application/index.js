@@ -7,23 +7,10 @@ import demoAppFixture from '../Squibble_Browser_Client/src/fixtures/Example_Docu
 
 window.addEventListener("unhandledrejection", event => console.warn(`UNHANDLED PROMISE REJECTION: ${event.reason}`) )
 
-const publish = (topic, message  ) => {
-  //console.log( message )
-  /*
-  if( typeof( obj ) != 'object' ) {
-    obj = { msg: obj }
-  }
-  obj.date = new Date().toISOString()
-   */
-  PubSub.publish( topic, message )
-}
-
-const errFields = ( err ) => { return err }
-/*
-  (({date, status, name, message, reason, docId }) =>
-    ({date, status, name, message, reason, docId } ))( err )
-
- */
+const publish = ( topic, message ) =>
+  PubSub.publish( topic, ( typeof( message ) === 'object' )
+    ? { date: new Date().toISOString(), ...message }
+    : { date: new Date().toISOString(), message: message } )
 
 const CONFIG = Object.freeze( {
   name:           PACKAGE.Name,
@@ -36,23 +23,24 @@ const useHeartBeat = ( delay ) => {
     setInterval( ()=> { publish( INFO, 'HeartBeat' ) }, 1000 * delay );
 }
 
-const initDocumentStore = ( id, doc, store ) =>
-  Promise.all(
-    [store.get( id )
-      .then( doc => doc )
-      .catch( err => ( err.name !== 'not_found' )
-        ? publish( ERROR, errFields( err ) )
-        : null
-    ),
-    store.put( { _id: id, ...doc, date: new Date().toISOString() } )
-      .then( res => res )
-      .then( doc => doc )
-      .catch( err => publish( ERROR, errFields( err ) ) )
-    ]).then( doc => doc )
+const getDocById = ( id, store ) => store.get( id )
+
+const putThenGetById = ( id, doc, store) =>
+  store.put( { _id: id, ...doc, date: new Date().toISOString() } )
+    .then( res => getDocById( res.id, store  ) )
+    .then( doc => doc )
+    .catch( err => publish( ERROR, err ) )
+
+const getPutGetById = ( id, doc, store ) =>
+  getDocById( id, store )
+    .then( doc => doc )
+    .catch( res => putThenGetById( id, doc, store ) )
+    .then( doc => doc )
+    .catch( res => publish( ERROR, res ) )
 
 const flushDataStore = (datastoreId) => new PouchDB( datastoreId ).destroy( datastoreId )
 
-const initDataStore = async ( datastoreId ) => {
+const initDataStore = ( datastoreId ) => {
   const db = new PouchDB( datastoreId )
   publish( DATASTORE, 'Connecting Local: ' + datastoreId )
   publish( DATASTORE, 'DataStore Ready: ' + datastoreId );
@@ -69,28 +57,20 @@ export const appInit = async ( client ) => {
   publish( INFO, startMessage )
   const appId = 'squibble_' + md5( CONFIG.name + CONFIG.build );
   const clientId = 'squibble_' + md5( client.name = client.build )
-  const defaultAppConfig = {
-    type: 'AppConfig',
-    AppConfig: {
+  const defaultAppState = {
+    config: {
       application: { id: appId, ...CONFIG },
       client: { id: clientId, ...client }
     },
-    date: new Date().toISOString()
-  }
-  const defaultAppState = {
-    type: 'AppState',
-    config: { client: client, application: defaultAppConfig },
     appState: { document: demoAppFixture },
     date: new Date().toISOString()
   }
 
   try {
-    const dataStore = await initDataStore( defaultAppConfig.AppConfig.client.id );
-    const appConfig = await initDocumentStore( 'AppConfig', defaultAppConfig, dataStore )
-    const appState  = await initDocumentStore( 'AppState',  defaultAppState,  dataStore )
-    publish( APPSTATE, appConfig )
+    const dataStore = initDataStore( defaultAppState.config.client.id );
+    const appState  = await getPutGetById( 'AppState',  defaultAppState,  dataStore )
     publish( APPSTATE, appState )
-  } catch ( err ) { publish( ERROR, errFields(err) ) }
+  } catch ( err ) { publish( ERROR, err ) }
   useHeartBeat( 10 )
 }
 
