@@ -5,46 +5,55 @@ export default {
   scion: [
     {
       type: 'Section',
-      header: 'Weather Content',
+      header: 'Business Context',
       content: '',
       scion: [
         {
           type: 'article',
-          header: 'Objectives'
+          header: 'Objectives',
+          content: ''
         },
         {
           type: 'article',
-          header: 'Background'
+          header: 'Background',
+          content: ''
         },
         {
           type: 'article',
           header: 'In-Scope',
+          content: ''
         },
         {
           type: 'article',
-          header: 'Out-of-Scope'
+          header: 'Out-of-Scope',
+          content: ''
         },
       ]
     },
     {
       type: 'Section',
       header: 'Decision Factors',
+      content: '',
       scion: [
         {
           type: 'article',
-          header: 'Constraints'
+          header: 'Constraints',
+          content: '',
         },
         {
           type: 'article',
-          header: 'Assumptions'
+          header: 'Assumptions',
+          content: '',
         },
         {
           type: 'article',
-          header: 'Risks'
+          header: 'Risks',
+          content: '',
         },
         {
           type: 'article',
-          header: 'Dependencies'
+          header: 'Dependencies',
+          content: '',
         },
       ]
     }
