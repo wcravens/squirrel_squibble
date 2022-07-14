@@ -1,5 +1,5 @@
 export default {
-  type: 'Main',
+  type: 'main',
   header: 'Distribute acorns across the Territory - Criteria Assessment (v1.9)',
   content: 'Secret program to bury nuts!',
   scion: [
@@ -11,8 +11,40 @@ export default {
         {
           type: 'article',
           header: 'Objectives',
-          content: ''
+          content: '',
+          scion: [ {
+            type: 'List',
+            items: [
+              {
+                type: 'ListItem',
+                content: 'Item 1'
+              },
+              {
+                type: "ListItem",
+                content: 'Item 2',
+              },
+              {
+                type: 'List',
+                items: [
+                  {
+                    type: "ListItem",
+                    content: 'Item 2.1',
+                  },
+                  {
+                    type: "ListItem",
+                    content: 'Item 2.b',
+                  }
+                ]
+
+              },
+              {
+                type: "ListItem",
+                content: 'Item 3',
+              },
+            ]
+          } ]
         },
+
         {
           type: 'article',
           header: 'Background',
