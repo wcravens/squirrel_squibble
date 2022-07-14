@@ -1,28 +1,35 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client'
-import md5 from 'md5'
+import { createRoot } from 'react-dom/client';
+import PACKAGE from '../package.json';
+import * as Squibble from './Squibble';
+import md5 from 'md5';
 import App from './App';
-import ClientInfo from './components/ClientInfo'
+import VersionInfo from './components/VersionInfo';
 //import './custom.scss';
 
 const config = {
-  name: 'Squibble Web Client',
-  semver: '0.0.1',
-  "pre_release": 'pre-alpha 0',
-  "build": process.env.REACT_APP_BUILD_ID
+  name:           PACKAGE.Name,
+  semver:         PACKAGE.version,
+  "pre_release":  PACKAGE.pre_release,
+  "build":        process.env.REACT_APP_BUILD_ID
 }
 
-const CONFIG = Object.freeze( { client: {
+const CONFIG = Object.freeze( {
   "id": 'squibble_' + md5( config.name + config.build ),
   ...config
-}})
+})
+
+const appConfig = Squibble.register( CONFIG.client )
+const clientConfig = CONFIG.client;
 
 const container = document.getElementById( 'root' )
+
 const root = createRoot( container )
 root.render(
   <React.StrictMode>
     <App />
     <hr/>
-    <ClientInfo {...CONFIG } />
+    <VersionInfo {...CONFIG} />
+    <VersionInfo {...appConfig } />
   </React.StrictMode>,
 );

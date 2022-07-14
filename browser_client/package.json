@@ -1,6 +1,8 @@
 {
-  "name": "browser_client",
+  "name": "squibble_browser_client",
+  "Name": "Squibble Browser Client",
   "version": "0.1.0",
+  "pre_release": "pre-alpha 0",
   "private": true,
   "dependencies": {
     "@uiw/react-md-editor": "^3.14.5",
