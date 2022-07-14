@@ -9,6 +9,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "rich-markdown-editor": "^11.21.3",
     "sass": "^1.53.0"
   },
   "scripts": {
@@ -59,6 +60,11 @@
     "babel-plugin-named-exports-order": "^0.0.2",
     "dotenv-webpack": "^8.0.0",
     "prop-types": "^15.8.1",
+    "rehype-sanitize": "^5.0.1",
+    "styled-components": "^5.3.5",
     "webpack": "^5.73.0"
+  },
+  "resolutions": {
+    "prosemirror-model": "1.16.1"
   }
 }
