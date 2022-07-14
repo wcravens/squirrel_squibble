@@ -135,3 +135,18 @@ Mocha + Chai + [Enzyme](https://enzymejs.github.io/enzyme/)
 [Bootstrap npm starter](https://github.com/twbs/bootstrap-npm-starter)\
 [IBM / RedHat Node.js Reference Architecture](https://github.com/nodeshift/nodejs-reference-architecture)\
 [Asynchronous Javascript: From Promises to Async/Await](https://scoutapm.com/blog/async-javascript)
+
+## Markdown
+
+[JsonML](http://www.jsonml.org/)\
+[markdown-js](https://www.npmjs.com/package/markdown)\
+[Markdown-it](https://github.com/markdown-it/markdown-it)\
+[Markded](https://www.npmjs.com/package/marked)
+
+## Keyboard Shortcuts
+
+[Vim](http://toplan.github.io/vimjs/index.html) [GitHub](https://github.com/toplan/Vim.js) \
+[Vim4Browser](https://gitlab.com/deliberist/vim4browser)
+
+
+
