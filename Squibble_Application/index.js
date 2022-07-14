@@ -3,7 +3,6 @@ import md5 from 'md5'
 import * as PubSub from 'pubsub-js'
 import {INFO} from './event-types.js'
 
-
 const config = {
     name:           PACKAGE.Name,
     semver:         PACKAGE.version,
@@ -18,19 +17,17 @@ const CONFIG = Object.freeze( {
 
 export const subscribeToInfo = ( f ) => { PubSub.subscribe( INFO, f ) }
 
-PubSub.subscribe( INFO, console.log )
-
+export const subscsribeToStore = ( f ) => { PubSub.subscribe( STORE, f ) }
 const useHeartBeat = ( delay ) => {
-    //PubSub.publish( INFO, `HeartBeat ${new Date().toISOString()}`)
     setInterval( ()=> { PubSub.publish( INFO, `HeartBeat ${new Date().toISOString()}`) }, 1000 * delay );
 }
 
 export const register = ( client, options ) => {
-  PubSub.publish( INFO, 'Registered Client ' + new Date().toISOString() )
-  PubSub.publish( INFO, 'Client: ' + JSON.stringify( client ) )
-  PubSub.publish( INFO, 'Client Options: ' + JSON.stringify( options ) )
   if ( options.useHeartbeat > 0 ) {
     useHeartBeat(options.useHeartbeat );
   }
+  PubSub.publish( INFO, 'Registered Client '  + new Date().toISOString() )
+  PubSub.publish( INFO, 'Client: '            + JSON.stringify( client ) )
+  PubSub.publish( INFO, 'Client Options: '    + JSON.stringify( options ) )
   return CONFIG
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import PACKAGE from '../package.json';
-import * as Squibble from './Squibble';
+import * as Squibble from './Squibble_Application';
 import md5 from 'md5';
 import App from './App';
 import VersionInfo from './components/VersionInfo';
@@ -27,8 +27,9 @@ const root = createRoot( container )
 root.render(
   <React.StrictMode>
     <App />
-    <hr/>
-    <VersionInfo {...CONFIG} />
-    <VersionInfo {...appConfig } />
+    <footer className={"VersionInfo"}>
+      <VersionInfo config={{ type: 'ApplicationInfo', ...appConfig}} />
+      <VersionInfo config={{ type: 'ClientInfo', ...CONFIG}} />
+    </footer>
   </React.StrictMode>,
 );
