@@ -3,6 +3,7 @@
     border: 0;
     padding: 8px;
     color: #000;
+    width: 80%
 }
 
 .InlineEdit.pure {
@@ -16,4 +17,8 @@
 
 .InlineEdit:focus-visible {
     color: #000;
+}
+
+.InlineEdit:focus{
+    outline: 1px solid #bbb;
 }
