@@ -1,0 +1,22 @@
+div.ApplicationInfo {
+    width: 100%;
+    background: #53a7db;
+    padding-left: 10px;
+    border: 1px solid #182A48;
+    right: 0px;
+}
+
+div.ClientInfo{
+    width: 100%;
+    background: #5363db;
+    padding-left: 10px;
+    border: 1px solid #182A48;
+}
+
+footer.VersionInfo {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    margin: 0px
+}

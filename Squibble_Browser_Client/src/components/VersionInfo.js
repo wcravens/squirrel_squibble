@@ -1,9 +1,10 @@
 import React from 'react'
+import './VersionInfo.css'
 
-const VersionInfo = ( config ) => {
+const VersionInfo = ({ config, type}) => {
   return (
-    <div>
-      <pre style={{"fontSize": "x-small"}}>
+    <div className={config.type}>
+      <pre style={{"fontSize": "x-small"}} >
         {config.name}, {config.semver} Build: {config.build}, {config.pre_release ? config.pre_release : '' }
       </pre>
       <pre style={{"fontSize": "x-small"}}>
@@ -12,5 +13,4 @@ const VersionInfo = ( config ) => {
     </div>
   )
 }
-
 export default VersionInfo;
