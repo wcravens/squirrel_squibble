@@ -273,6 +273,19 @@ You can create your own Hooks to reuse stateful behavior between different compo
 
 There are many [Built-in hooks](https://reactjs.org/docs/hooks-reference.html)
 
+
+### ✌️ Rules of Hooks
+
+Hooks are JavaScript functions, but they impose two additional rules:
+
+ - Only call Hooks at the top level. Don’t call Hooks inside loops, conditions, or nested functions.
+
+ - Only call Hooks from React function components. Don’t call Hooks from regular JavaScript functions. (There is just one
+other valid place to call Hooks — your own custom Hooks. We’ll learn about them in a moment.)
+
+More details on [The Rules of Hooks](https://reactjs.org/docs/hooks-rules.html)
+
+
 ### Effect Hook
 
 `useEffect` adds the ability to perform side effects from a function component.   
