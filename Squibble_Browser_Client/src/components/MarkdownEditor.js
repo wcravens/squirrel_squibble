@@ -13,7 +13,6 @@ export default function MarkdownEditor() {
           rehypePlugins: [[rehypeSanitize]],
         }}
       />
-      <MDEditor.Markdown source={value} style={{ whiteSpace: 'pre-wrap' }} />
     </div>
   );
 }
