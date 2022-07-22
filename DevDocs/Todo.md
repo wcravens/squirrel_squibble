@@ -2,49 +2,48 @@
 
 ## Currently
 
-Register Application and Create a Store
-  - Explore PouchDB API and Paradigms
-  - Load PouchDB if appropriate
-  - Test for Application Store, we know this will fail.
-  - Register the Application
-  - Initialize Storage
-  - Store App Registration Info
-  - Pass to Registration Screen
+[x] - Register Application and Create a Store
+[x]   - Explore PouchDB API and Paradigms
+[x]   - Load PouchDB if appropriate
+[x]   - Test for Application Store, we know this will fail.
+[x]   - Register the Application
+[x]   - Initialize Storage
+[x]   - Store App Registration Info
+[ ]   - Pass to Registration Screen
 
 ## Design Concepts
 
-- Reduce DDD concepts into minimal Functional components
-- Decompose Layers and Components
-- Decompose Domain Business Logic, Event Sourcing and Command Services
-- Document / Identify expected Pure vs Impure Function Components
-  - Outer 'ring' of architecture contains all of the impure functions needed to provide interaction
+[x]- Reduce DDD concepts into minimal Functional components
+[x]- Decompose Layers and Components
+[x]- Decompose Domain Business Logic, Event Sourcing and Command Services
+[x]- Document / Identify expected Pure vs Impure Function Components
+[x]  - Outer 'ring' of architecture contains all of the impure functions needed to provide interaction
 
 ## Proof of Concepts
 
-- Events to Console
-- Immutability
-- Pub/Sub Brokers
-- LocalStorage in Node.js
-- Document Store with 'LocalStorage' API
+[x] - Events to Console
+[x] - Immutability
+[x] - Pub/Sub Brokers
+[x] - LocalStorage in Node.js
+[x] - Document Store with 'LocalStorage' API
 
 - Config File/ Immutable CONFIG
 
 ### Repository
 
-- JSON Schema Validation
-- definitions
-- versioning
-- validator
-
-- Eventual Consistency
-- MVCC
-
-
-- Memoization in Repository Persistence functionality
-- Download Application State as an ASCII JSON document
-- Download Document State ""
-- Download Document Markdown
-- Download Document HTML
+[ ] - JSON Schema Validation
+[ ] - definitions
+[ ] - versioning
+[ ] - validator
+[ ] - Eventual Consistency
+[ ] - MVCC
+[ ] - Memoization in Repository Persistence functionality
+ 
+[ ] - Download Application State as an ASCII JSON document
+[ ] - Download Document State ""
+[ ] - Download Document Markdown
+[ ] - Download Document HTML
+ 
 - Testing Framework
   - [Jest](https://jestjs.io/docs/en/getting-started) for React App
   - Mocha + Chai for Domain Modules
@@ -54,9 +53,9 @@ Register Application and Create a Store
 - View Router
  
 ## Development Tools
-- ESLint
+[x] - ESLint
 
 ## Completed
-- Render Application Information in Footer
-  - Application Build ID from git commit hash
-  - Application Metadata in JSON File (Name, BuildQuality, etc)
+[x] - Render Application Information in Footer
+[x]   - Application Build ID from git commit hash
+[x]   - Application Metadata in JSON File (Name, BuildQuality, etc)
