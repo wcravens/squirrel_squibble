@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/Entity",
+  "type": "object",
+  "properties": {
+    "id": "uuid",
+    "created_on": "date-time",
+    "updated_on": "date-time",
+    "entity_type": "uri-reference",
+    "parent": { "$ref":  "#" },
+    "children": {
+      "type": "array",
+      "items": { "$ref": "#" }
+    },
+    "required": ["id", "created_on", "entity_type", "parent" ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/Event",
+  "type": "object",
+  "properties": {
+    "id": "uuid",
+    "datetime": "date-time",
+    "user": "uuid",
+    "event_type": "uri-reference"
+  },
+  "required": [ "id", "datetime", "user", "event_type" ]
+}

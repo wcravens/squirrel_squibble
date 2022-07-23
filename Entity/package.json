@@ -1,0 +1,21 @@
+{
+  "name": "entity",
+  "version": "0.0.1",
+  "description": "Entity object manager.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Wes Cravens",
+  "license": "MIT",
+  "dependencies": {
+    "ajv": "^8.11.0",
+    "chai": "^4.3.6",
+    "chai-json-schema-ajv": "^5.2.4",
+    "mocha": "^10.0.0"
+  }
+}
