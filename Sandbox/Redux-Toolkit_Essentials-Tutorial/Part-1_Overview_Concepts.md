@@ -35,7 +35,8 @@ All state updates are done immutably.
 
   - ***Reducers must always follow some specific rules:***
     - They should only calculate the new state value based on the state and action arguments
-    - They are not allowed to modify the existing state. Instead, they must make immutable updates, by copying the existing state and making changes to the copied values.
+    - They are not allowed to modify the existing state. Instead, they must make immutable updates, by copying the
+      existing state and making changes to the copied values.
     - They must not do any asynchronous logic, calculate random values, or cause other "side effects"
     - *In other words: They must be 'pure functions'.
   - The logic inside reducer functions typically follows the same series of steps:
@@ -59,7 +60,7 @@ const counterReducer = (state = initialState, action) =>
   - The `store` is created by giving it a reducer, and has a method called `getState()` that returns the current state.
 
 ```js
-import {configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 const store = configureStore( { reducer: conterReducer } )
 //...
 console.log( store.getState() )
