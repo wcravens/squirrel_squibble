@@ -1,4 +1,5 @@
-# [React Toolkit Essentials Tutorial](https://redux.js.org/tutorials/essentials/part-1-overview-concepts)
+# [React Toolkit Essentials Tutorial; Part 1 Overview Concepts](https://redux.js.org/tutorials/essentials/part-1-overview-concepts)
+
 
 ## State Management
 
@@ -117,4 +118,3 @@ console.log( currentValue )
   -
 <style>img { width: 62% } </style>
 ![Redux Data-Flow Diagram](./redux_data_flow_diagram.gif)
-
