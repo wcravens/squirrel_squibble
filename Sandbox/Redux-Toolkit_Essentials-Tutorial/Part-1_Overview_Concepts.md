@@ -106,7 +106,7 @@ console.log( currentValue )
   - When something happens (such as a user clicking a button), the state is updated based on what occurred
   - The UI re-renders based on the new state
 
-### Specifically for Redux we can ellaborate:
+### Specifically for Redux we can elaborate:
 
   - Something happens in the app, such as a user clicking a button
   - The app code dispatches an action to the Redux store, like dispatch({type: 'counter/increment'})
@@ -114,6 +114,7 @@ console.log( currentValue )
   - The store notifies all parts of the UI that are subscribed that the store has been updated
   - Each UI component that needs data from the store checks to see if the parts of the state they need have changed.
   - Each component that sees its data has changed forces a re-render with the new data, so it can update what's shown on the screen.
+  -
 <style>img { width: 62% } </style>
 ![Redux Data-Flow Diagram](./redux_data_flow_diagram.gif)
 
