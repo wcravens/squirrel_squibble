@@ -18,8 +18,12 @@ All state updates are done immutably.
 ## Terminology
 
 **Actions**
-  - An action is any plain JavaScript object that has at least a `type` field.
-  - Often an action object will also carry some 'information', usually via a `payload` field.
+
+- An action is any plain JavaScript object that has at least a `type` field.
+- The type field should be a string that gives this action a descriptive name, like "todos/todoAdded". We usually write
+  that type string like "domain/eventName", where the first part is the feature or category that this action belongs to,
+  and the second part is the specific thing that happened.
+- Often an action object will also carry some 'information', usually via a `payload` field.
 
 **Action Creator**
   - Essentially a factory function that returns an action object.  Typically, used so that we don't have to write the
