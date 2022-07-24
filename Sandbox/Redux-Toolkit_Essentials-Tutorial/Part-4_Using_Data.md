@@ -29,3 +29,24 @@ Use the `Link` component from `react-router-dom` to provide a link to the `Singl
 
 Add a feature to the navbar that allows quick return to the default view.
 
+## Editing Posts
+
+We'll add a new feature that will allow us to edit an existing post.
+
+Let's add a new <EditPostForm> component that has the ability to take an existing post ID, read that post from the
+store, lets the user edit the title and post content, and then save the changes to update the post in the store.
+
+### Updating Post Entries
+
+Update `postsSlice` to create a new reducer function and an edit action to update the store.
+
+### Create an Edit Post Form
+
+`features/posts/EditPostForm.js`
+
+Import and add a route to `App.js`.
+
+Add edit link to the `SinglePostPage` view.
+
+
+
