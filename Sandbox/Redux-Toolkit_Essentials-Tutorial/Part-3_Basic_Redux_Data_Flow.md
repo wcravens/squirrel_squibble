@@ -38,6 +38,8 @@ If you start the app and look in Redux DevTools you'll see that the current stat
 
 The primary feature of our app is a list of posts.  First we'll need the ability to post.
 
+### Creating the Posts Slice for the Store
+
 Create new slice in `features/posts/postsSlice.js`
 
 We need to add the new slice's reducer to the store.
@@ -48,8 +50,39 @@ We need to add the new slice's reducer to the store.
 //...
 import postsReducer from '../features/posts/postsSlice'
 //...
-  reducer: () => ({
+  reducer: {
     posts: postsReducer
-  })
+  }
 //...
 ```
+
+So we have created a slice, and added its reduce to the store.  You can now refresh the Application and see that the
+state is initialized with our two posts.
+
+***Note:***: *The pattern of initializing your slice and wiring it up with an initialState is a good practice.  This
+allows you to get your reducer wired up quickly and see that it works in DevTools.*
+
+### Showing the Posts List
+
+Now that we have some mock data in the store, we can create a component to view lists of posts.
+
+New component: `features/posts/PostsList.js`
+
+We can create a new view by replacing the default route in `App.js`.
+
+```js
+//...
+import { PostsList} from "./features/posts/PostsList";
+//...
+    render={ () => (
+      <React.Fragment>
+        <PostsList />
+      </React.Fragment>
+    )}
+//...
+```
+
+The app should now be rendering the posts (via live update).
+
+
+
