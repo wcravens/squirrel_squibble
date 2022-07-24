@@ -8,7 +8,13 @@ const initialState = [
 const postsSlice = createSlice({
   name: 'posts',
   initialState, // Using shorthand: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
-  reducers: {}
+  reducers: {
+    postAdded( state, action) {
+      state.push( action.payload ) // Globally state.posts.push(...)
+    }
+  }
 })
+
+export const { postAdded } = postsSlice.actions
 
 export default postsSlice.reducer

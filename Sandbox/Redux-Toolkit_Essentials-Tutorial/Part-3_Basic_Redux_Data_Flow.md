@@ -84,5 +84,54 @@ import { PostsList} from "./features/posts/PostsList";
 
 The app should now be rendering the posts (via live update).
 
+### Adding New Posts
+
+We'll create an 'Add New Post' form that allows us to write and save posts.  First create the empty form and add it to
+the page view and then wire it up to the store so that new posts are added when we click a 'Save Post' button.
+
+#### Adding the New Post Form
+
+Create `features/posts/AddPostForm.js`
+
+Import the form into `App.js`
+
+```js
+<React.Fragment>
+  <AddPostForm/>
+  <PostsList/>
+</React.Fragment>
+```
+
+With Live Reload you should now see the Add new post form and input elements.  ***Note:*** *Since the form is not yet
+wired up to the store you will not be able to save a new posts.*
+
+#### Saving new Posts
+
+We need to add a reducer to our 'postsSlice' to handle the `action` necessary to add a new post.
+
+Add a `postAdded = ( state, action ) => `  reducer to our posts slice.  ***Note:*** *Since our postsSlice is only
+responsible for the slice of state under 'posts', the `state` passed to this reducer contains only the state held under
+the `posts` key.
+
+The `action` payload passed to the reducer will hold the data from the form input.
+
+`createSlice` will automatically create an 'action creator' fucntion with the same name as the reducer function.  We
+will export this creator function so that we can use it our UI components to dispatch the appropriate action when the
+user clicks "Save Post".
+
+`features/posts/postsSlice`
+
+```js
+//...
+reducers: {
+  postAdded(state, action) {
+    state.push(action.payload)
+  }
+}
+//...
+```
+
+#### Dispatching the "Post Added" Action
+
 
 
