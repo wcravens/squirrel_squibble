@@ -48,5 +48,29 @@ Import and add a route to `App.js`.
 
 Add edit link to the `SinglePostPage` view.
 
+### Preparing Action Payloads
 
+`createSlice` is generating action creators for us.  But we can still provide the logic that we
+need to prepare action payloads.  We do this by splitting our reducer function into an object with
+both `reducer` and `producer` functions.
 
+`features/posts/postsSlicer.js`
+
+```js
+//...
+    postAdded: {
+      reducer(state, action) {
+        state.push(action.payload)
+      },
+      prepare(title, content) {
+        return {
+          payload: {
+            id: nanoid(),
+            title,
+            content
+          }
+        }
+      }
+    }
+//...
+```

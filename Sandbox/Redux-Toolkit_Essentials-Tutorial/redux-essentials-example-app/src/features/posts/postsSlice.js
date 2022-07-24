@@ -9,8 +9,19 @@ const postsSlice = createSlice({
   name: 'posts',
   initialState, // Using shorthand: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
   reducers: {
-    postAdded( state, action) {
-      state.push( action.payload ) // Globally state.posts.push(...)
+    postAdded: {
+      reducer( state, action ) {
+        state.push( action.payload ) // Globally state.posts.push(...)
+      },
+      prepare( title, content ) {
+        return {
+          payload: {
+            id: nanoid(),
+            title,
+            content
+          }
+        }
+      }
     },
     postUpdated( state, action ) {
       const { id, title, content } = action.payload
