@@ -5,13 +5,22 @@ import './editableBlock.css';
 
 // following: https://medium.com/swlh/how-to-build-a-text-editor-like-notion-c510aedfdfcc
 
+const SectionTypes = {
+    title: "# Title - IA \n Content",
+    business_context: "## Business Context",
+    objectives: "### Objectives \n - Objective 1",
+    background: "### Background \n Content...",
+    in_scope: "### In-Scope: ",
+    scope_block: "#### Scope Group \n - Content 1... ",
+}
+
 const EditableBlock = (props) => {
 
     var contentEditable = useRef(null);
 
     const [state, setState] = useState({
         htmlBackup: null,
-        html: "",
+        html: SectionTypes[props.type],
         tag: "p",
         previousKey: "",
         selectMenuIsOpen: false,
@@ -22,68 +31,7 @@ const EditableBlock = (props) => {
     }
     );
 
-    const getCaretCoordinates = () => {
-        let x, y;
-        const selection = window.getSelection();
-        if (selection.rangeCount !== 0) {
-            const range = selection.getRangeAt(0).cloneRange();
-            range.collapse(false);
-            const rect = range.getClientRects()[0];
-            if (rect) {
-                x = rect.left;
-                y = rect.top;
-            }
-        }
-        return { x, y };
-    };
-
-    // const onKeyUpHandler = (e) => {
-    //     if (e.key === "/") {
-    //         openSelectMenuHandler();
-    //     }
-    // }
-
     const [menuOpen, setMenuOpen] = useState(false);
-
-    const openSelectMenuHandler = () => {
-        const { x, y } = getCaretCoordinates();
-        setState(prev => {
-            return {
-                ...prev,
-                selectMenuIsOpen: true,
-                selectMenuPosition: { x, y }
-            }
-        })
-        setMenuOpen(true);
-        document.addEventListener("click", closeSelectMenuHandler);
-    }
-
-    const closeSelectMenuHandler = () => {
-        setMenuOpen(false);
-        setState(prev => {
-            return {
-                ...prev,
-                htmlBackup: null,
-                selectMenuIsOpen: false,
-                selectMenuPosition: { x: null, y: null }
-            }
-        })
-        document.removeEventListener("click", closeSelectMenuHandler);
-    }
-
-    const tagSelectionHandler = (tag) => {
-        setState(prev => {
-            return {
-                ...prev,
-                tag: tag,
-                html: prev.htmlBackup
-            }
-        })
-        console.log(state);
-        // setCaretToEnd(contentEditable.current);
-        // closeSelectMenuHandler();
-    }
-
 
     useEffect(() => {
         // setState(prev => {
@@ -110,27 +58,20 @@ const EditableBlock = (props) => {
     }
 
     const onKeyDownHandler = (e) => {
-        if (e === "/") {
-            setState(prev => {
-                return {
-                    ...prev,
-                    // htmlBackup: html
-                }
-            })
-            openSelectMenuHandler();
-        }
-        if (e === "Enter") {
+        if (e === "\n") {
             if (state.previousKey !== "Shift") {
-                e.preventDefault();
+                // e.preventDefault();
                 console.log(contentEditable.current);
                 props.addBlock({
                     id: props.id,
                     ref: contentEditable.current
                 });
+                // document.getElementById(props.id).nextElementSibling.focus();
+                // console.log();
             }
         }
         if (e === "Backspace" && state.html == "<br>") {
-            e.preventDefault();
+            // e.preventDefault();
             props.deleteBlock({
                 id: props.id,
                 ref: contentEditable.current
@@ -146,22 +87,18 @@ const EditableBlock = (props) => {
     }
 
     const handleChange = (e) => {
-        onKeyDownHandler("/");
+        // onKeyDownHandler(e.slice(-1));
     }
 
     return (
-        <div className='editableBlock'>
-            {menuOpen ?
-                <SelectMenu
-                    position={state.selectMenuPosition}
-                    onSelect={tagSelectionHandler}
-                    close={closeSelectMenuHandler}
-                /> : null}
-
-            <Editor
-                onChange={(value) => handleChange(value())}
-            />
-        </div>
+        <Editor
+            className='editableBlock'
+            id={props.id}
+            defaultValue={state.html}
+            onChange={(value) => handleChange(value())}
+            ref={contentEditable}
+            placeholder="New Section..."
+        />
     );
 }
 

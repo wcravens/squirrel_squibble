@@ -6,12 +6,16 @@ const uid = () => {
 };
 
 const EditablePage = () => {
-    const initialBlock = { id: uid(), html: "Edit Me...", tag: "p" };
+    const initialBlock = { id: uid(), html: "Edit Me...", tag: "p", type: "title" };
+    const initialBlock2 = { id: uid(), html: "Edit Me...", tag: "p", type: "business_context" };
+    const initialBlock3 = { id: uid(), html: "Edit Me...", tag: "p", type: "objectives" };
+    const initialBlock4 = { id: uid(), html: "Edit Me...", tag: "p", type: "in_scope" };
+    const initialBlock5 = { id: uid(), html: "Edit Me...", tag: "p", type: "scope_block" };
 
     var focusedBlock = null;
 
     const [state, setState] = useState({
-        blocks: [initialBlock],
+        blocks: [initialBlock, initialBlock2, initialBlock3, initialBlock4, initialBlock5],
         focus: false
     })
 
@@ -41,20 +45,11 @@ const EditablePage = () => {
 
     useEffect(() => {
         if (focusedBlock) {
-            focusedBlock.nextElementSibling.focus();
+            // focusedBlock.nextElementSibling.focus();
         }
         console.log(focusedBlock)
     }, [state.focus]);
 
-    const setCaretToEnd = (element) => {
-        const range = document.createRange();
-        const selection = window.getSelection();
-        range.selectNodeContents(element);
-        range.collapse(false);
-        selection.removeAllRanges();
-        selection.addRange(range);
-        element.focus();
-    };
 
     const deleteBlockHandler = (currentBlock) => {
         const previousBlock = currentBlock.ref.previousElementSibling;
@@ -64,7 +59,6 @@ const EditablePage = () => {
             const updatedBlocks = [...blocks];
             updatedBlocks.splice(index, 1);
             setState({ blocks: updatedBlocks }, () => {
-                setCaretToEnd(previousBlock);
                 previousBlock.focus();
             });
         }
@@ -72,10 +66,7 @@ const EditablePage = () => {
     }
 
     // setInterval(() => {
-    //     state.blocks.map((block, key) => {
-    //         console.log(block.html);
-    //         console.log(key);
-    //     })
+    //     console.log(document.activeElement)
     // }, 5000)
 
     return (
@@ -90,6 +81,7 @@ const EditablePage = () => {
                         updatePage={updatePageHandler}
                         addBlock={addBlockHandler}
                         deleteBlock={deleteBlockHandler}
+                        type={block.type}
                     />
                 ))
             }
