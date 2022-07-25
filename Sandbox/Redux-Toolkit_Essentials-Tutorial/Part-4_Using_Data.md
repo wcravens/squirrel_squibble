@@ -105,3 +105,25 @@ prepare( title, content, userId ) {
 //...
 ```
 
+## More Post Features
+
+### Storing Dates for Posts
+
+Add `features/posts/TimeAgo.js` component.  
+
+### Sorting the Posts List
+
+Since `array.sort()` mutates the existing array, we need to make a copy of `state.posts` and sort that copy. We know
+that our `post.date` fields are being kept as date timestamp strings, and we can directly compare those to sort the
+posts in the right order.
+
+`features/posts/PostsList.js`
+
+```js
+//...
+const orderedPosts = posts.slice().sort( (a,b) => b.date.localeCompare( a.date ) )
+//...
+const renderedPosts = orderedPosts.map(post => (
+//...
+```
+
