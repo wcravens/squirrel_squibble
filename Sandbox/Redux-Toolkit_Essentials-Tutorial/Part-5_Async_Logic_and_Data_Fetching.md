@@ -121,3 +121,19 @@ You may have noticed that this time the case reducer isn't using the state varia
 a new result. If we return a new value, that will replace the existing state completely with whatever we return. (Note
 that if you want to manually return a new value, it's up to you to write any immutable update logic that might be
 needed.)
+
+## Adding New Posts
+
+We now have to update our `<AddPostForm>` so that it saves new posts in the API and not just in the store.
+
+### Sending Data with Thunks
+
+Update `postsSlice` so that it relies on the server to generate the unique id and expects the server to return the
+fully populated post object with all data on success.
+
+Redux Toolkit adds a `.unwrap()` function to the returned Promise, which will return a new Promise that either has the
+actual `action.payload` value from a fulfilled action, or throws an error if it's the rejected action. This lets us
+handle success and failure in the component using normal try/catch logic. So, we'll clear out the input fields to reset
+the form if the post was successfully created, and log the error to the console if it failed.
+
+
