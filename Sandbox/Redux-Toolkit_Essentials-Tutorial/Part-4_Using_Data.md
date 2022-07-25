@@ -78,4 +78,21 @@ import { nanoid } from "@reduxjs/toolkit";
 //...
 ```
 
+## Users and Posts
+
+Add a Users slice and add to the store.
+
+`features/users/usersSlice.js`
+
+`app/store.js`
+```js
+//..
+import usersReducer from '../features/users/usersSlice'
+//..
+  users: usersReducer
+//..
+```
+
+## Adding Authors for Posts
+
 
