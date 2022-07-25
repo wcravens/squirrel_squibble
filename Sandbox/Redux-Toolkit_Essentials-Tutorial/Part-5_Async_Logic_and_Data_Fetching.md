@@ -47,3 +47,32 @@ Thunks are typically written in "slice" files. `createSlice` itself does not hav
 so you should write them as separate functions in the same slice file. That way, they have access to the plain action
 creators for that slice, and it's easy to find where the thunk lives.
 
+### Writing Async [Thunks](https://en.wikipedia.org/wiki/Thunk)
+
+Data fetching logic for Redux typically follows a predictable pattern:
+
+- A "start" action is dispatched before the request, to indicate that the request is in progress. This may be used to
+  track loading state to allow skipping duplicate requests or show loading indicators in the UI.
+- The async request is made
+- Depending on the request result, the async logic dispatches either a "success" action containing the result data, or
+  a "failure" action containing error details. The reducer logic clears the loading state in both cases, and either
+  processes the result data from the success case, or stores the error value for potential display.
+
+If all you care about is *success* then you can happily forgo *start* and *failure*. They are not required.
+
+The toolkit provides `createAsyncThunk` as a helper to create and dispatch these actions.
+
+`createAsyncThunk` abstracts this pattern by generating the action types and action creators, and generating a thunk that
+dispatches those actions automatically. You provide a callback function that makes the async call and returns a Promise
+with the result.
+
+## Loading Posts
+
+Remove the `initialState` from our `postsSlice` and replace with an async API call using our mock service.
+
+We'll change the structure in `postsSlice` to keep the loading state along with the array of posts.
+
+Currently, the `useSelector` hooks watching for changes to the posts slice are looking for an array of posts.  We'll also
+update these hooks to accommodate our new data structure.  We can move our selector functions into the slice definition
+file so that we can update them in one spot when the slice changes and reuse them in any consuming components.
+
