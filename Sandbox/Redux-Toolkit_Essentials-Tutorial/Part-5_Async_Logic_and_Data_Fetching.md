@@ -76,3 +76,48 @@ Currently, the `useSelector` hooks watching for changes to the posts slice are l
 update these hooks to accommodate our new data structure.  We can move our selector functions into the slice definition
 file so that we can update them in one spot when the slice changes and reuse them in any consuming components.
 
+
+### Loading State for Requests
+
+When we make an API call, we can view its progress as a small state machine that can be in one of four possible states:
+
+- The request hasn't started yet
+- The request is in progress
+- The request succeeded, and we now have the data we need
+- The request failed, and there's probably an error message
+
+It's good to track these states with an enum.
+E.g.
+
+```js
+{
+  // Multiple possible status enum values
+  status: 'idle' | 'loading' | 'succeeded' | 'failed',
+  error: string | null
+}
+```
+
+We'll use this pattern in postsSlice.
+
+### Fetching Data with `createAsyncThunk`
+
+We'll import the `client` utility from  `src/api` and use that to make a request to `/fakeApi/posts`.
+
+`features/posts/postsSlice`
+
+### Reducers and Loading Actions
+
+Let's handle the different actions in our reducers.  At this point we want to handle a reducer that is not defined in
+the reducers object.  This is easily achievable with the `extraReducers` field.  We use these to build reducers that
+listen for `posts/fetchPosts/succeeded` and `posts/fetchPosts/failed` actions in response to `pending` and `fullfilled`
+and `rejected` responses from our promise.
+
+### Displaying Loading State
+
+### Loading Users
+
+You may have noticed that this time the case reducer isn't using the state variable at all. Instead, we're returning the
+`action.payload` directly. Immer lets us update state in two ways: either mutating the existing state value, or returning
+a new result. If we return a new value, that will replace the existing state completely with whatever we return. (Note
+that if you want to manually return a new value, it's up to you to write any immutable update logic that might be
+needed.)
