@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
-import ContentEditable from 'react-contenteditable';
+import Editor from 'rich-markdown-editor';
 import SelectMenu from './selectMenu';
+import './editableBlock.css';
 
 // following: https://medium.com/swlh/how-to-build-a-text-editor-like-notion-c510aedfdfcc
 
@@ -36,25 +37,11 @@ const EditableBlock = (props) => {
         return { x, y };
     };
 
-    const setCaretToEnd = (element) => {
-        const range = document.createRange();
-        const selection = window.getSelection();
-        range.selectNodeContents(element);
-        range.collapse(false);
-        selection.removeAllRanges();
-        selection.addRange(range);
-        element.focus();
-    };
-
-    const handleBlur = () => {
-        console.log(contentEditableRef.current.innerHTML);
-    }
-
-    const onKeyUpHandler = (e) => {
-        if (e.key === "/") {
-            openSelectMenuHandler();
-        }
-    }
+    // const onKeyUpHandler = (e) => {
+    //     if (e.key === "/") {
+    //         openSelectMenuHandler();
+    //     }
+    // }
 
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -99,13 +86,14 @@ const EditableBlock = (props) => {
 
 
     useEffect(() => {
-        setState(prev => {
-            return {
-                ...prev,
-                tag: props.tag,
-                html: props.html
-            }
-        })
+        // setState(prev => {
+        //     return {
+        //         ...prev,
+        //         tag: props.tag,
+        //         html: props.html
+        //     }
+        // })
+        // document.addEventListener('keydown', onKeyDownHandler);
     })
 
     useEffect(() => {
@@ -122,15 +110,16 @@ const EditableBlock = (props) => {
     }
 
     const onKeyDownHandler = (e) => {
-        if (e.key === "/") {
+        if (e === "/") {
             setState(prev => {
                 return {
                     ...prev,
-                    htmlBackup: html
+                    // htmlBackup: html
                 }
             })
+            openSelectMenuHandler();
         }
-        if (e.key === "Enter") {
+        if (e === "Enter") {
             if (state.previousKey !== "Shift") {
                 e.preventDefault();
                 console.log(contentEditable.current);
@@ -140,7 +129,7 @@ const EditableBlock = (props) => {
                 });
             }
         }
-        if (e.key === "Backspace" && state.html == "<br>") {
+        if (e === "Backspace" && state.html == "<br>") {
             e.preventDefault();
             props.deleteBlock({
                 id: props.id,
@@ -150,31 +139,29 @@ const EditableBlock = (props) => {
         setState(prev => {
             return {
                 ...prev,
-                previousKey: e.key
+                previousKey: e
             }
         })
         console.log(state);
     }
 
+    const handleChange = (e) => {
+        onKeyDownHandler("/");
+    }
+
     return (
-        <>
+        <div className='editableBlock'>
             {menuOpen ?
                 <SelectMenu
                     position={state.selectMenuPosition}
                     onSelect={tagSelectionHandler}
-                // close={closeSelectMenuHandler}
+                    close={closeSelectMenuHandler}
                 /> : null}
 
-            <ContentEditable
-                className="Block"
-                innerRef={contentEditable}
-                html={state.html}
-                tagName={state.tag}
-                onChange={onChangeHandler}
-                onKeyDown={onKeyDownHandler}
-                onKeyUp={onKeyUpHandler}
+            <Editor
+                onChange={(value) => handleChange(value())}
             />
-        </>
+        </div>
     );
 }
 

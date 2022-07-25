@@ -16,7 +16,6 @@ const EditablePage = () => {
     })
 
     const updatePageHandler = (updatedBlock) => {
-        console.log(updatedBlock);
         const blocks = state.blocks;
         const index = blocks.map((b) => b.id).indexOf(updatedBlock.id);
         const updatedBlocks = [...blocks];

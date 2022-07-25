@@ -1,0 +1,3 @@
+.editableBlock:hover {
+    outline: rgba(0, 0, 255, 0.388) groove 2px;
+}
