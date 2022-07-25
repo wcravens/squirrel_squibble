@@ -95,4 +95,13 @@ import usersReducer from '../features/users/usersSlice'
 
 ## Adding Authors for Posts
 
+`features/posts/postsSlice.js`
+
+```js
+//...
+prepare( title, content, userId ) {
+//...
+  user: userId
+//...
+```
 
