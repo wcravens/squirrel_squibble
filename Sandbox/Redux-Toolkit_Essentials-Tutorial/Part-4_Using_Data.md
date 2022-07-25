@@ -127,3 +127,23 @@ const renderedPosts = orderedPosts.map(post => (
 //...
 ```
 
+### Post Reaction Buttons
+
+We'll implement a feature to allow readers to react to posts. We'll have a set of predefined reactions and maintain a
+counter in the store for each one that is incremented each time a reaction is selected.  We'll create a new component
+<ReactionButtons> and add it to both <PostsList> and <SinglePost> Views.
+
+## SUMMARY
+
+- **Any React component can use data from the Redux store as needed**
+  - Any component can read any data that is in the Redux store
+  - Multiple components can read the same data, even at the same time
+  - Components should extract the smallest amount of data they need to render themselves
+  - Components can combine values from props, state, and the Redux store to determine what UI they need to render. They can read multiple pieces of data from the store, and reshape the data as needed for display.
+  Any component can dispatch actions to cause state updates
+- ** Redux action creators can prepare action objects with the right contents**
+  -createSlice and createAction can accept a "prepare callback" that returns the action payload
+  -Unique IDs and other random values should be put in the action, not calculated in the reducer
+- **Reducers should contain the actual state update logic**
+  -Reducers can contain whatever logic is needed to calculate the next state
+  -Action objects should contain just enough info to describe what happened
