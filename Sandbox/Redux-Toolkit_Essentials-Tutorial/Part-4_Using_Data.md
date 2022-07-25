@@ -50,13 +50,16 @@ Add edit link to the `SinglePostPage` view.
 
 ### Preparing Action Payloads
 
-`createSlice` is generating action creators for us.  But we can still provide the logic that we
-need to prepare action payloads.  We do this by splitting our reducer function into an object with
-both `reducer` and `producer` functions.
+`createSlice` is generating action creators for us. But we can still provide the logic that we
+need to prepare action payloads. We do this by splitting our reducer function into two callback functions
+(ReducerAnPrepareObject) using both `reducer` and `producer` functions.
+[See docs for createSlice](https://redux-toolkit.js.org/api/createslice#reducers)
 
 `features/posts/postsSlicer.js`
 
 ```js
+//...
+import { nanoid } from "@reduxjs/toolkit";
 //...
     postAdded: {
       reducer(state, action) {
@@ -74,3 +77,5 @@ both `reducer` and `producer` functions.
     }
 //...
 ```
+
+
