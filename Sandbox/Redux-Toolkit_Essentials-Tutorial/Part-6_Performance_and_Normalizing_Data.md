@@ -18,6 +18,10 @@ manually fetch these from the mock API.
 Our first step is to setup a new slice, and an async thunk to fetch some notifications.  We will also store a timestamp
 for the latest notification in our state.
 
+`features/notifications/notificationsSlice.js`
+
+`app/store.js` Add slice to the store.
+
 ### *Thunk Arguments*
 
 The second argument to our payload creator is a thunkAPI object containing several useful functions and pieces of
@@ -38,7 +42,56 @@ information.
 
 We can now add a `<NotificationsList>` component to our app.
 
-`Navbar.js` links and button.
+`features/notifications/NotificationsList.js`
+
+`app/Navbar.js` links and button.
 
 `App.js` client side route.
 
+### Showing New Notifications
+
+We'll add a feature that keeps track of which notifications have been read.  And display the number of new unread
+notifications as a badge on our Notifications tab in the navbar.
+
+... skipped implementation of these features.  Review Later.
+
+
+## Improving Render Performance
+
+Review the React Profiler in dev tools.  We can see that UserPage is rendering all the time even if user posts data
+hasn't changed.  This is because we are using a `.filter()` function which will always return a different array
+reference.  Even though the contents of the array are the same, when the reference changes, the selector function will
+inspire a new rendering of the component.
+
+```js
+//...
+  const postsForUser = useSelector(state => {
+    const allPosts = selectAllPosts(state)
+    return allPosts.filter(post => post.user === userId)
+  })
+//...
+```
+
+### Memoization
+
+We can remember the array reference and only return a new one if the `state.posts` have changes or if the `userId`
+changes. This is memoization.
+
+[Reselect](https://github.com/reduxjs/reselect) is a library for creating memoized selector functions, and was specifically designed to be used with Redux. It
+has a createSelector function that generates memoized selectors that will only recalculate results when the inputs
+change. Redux Toolkit exports the createSelector function, so we already have it available.
+
+Use Reselect in `features/posts/postsSlice.js`.
+
+```js
+//...
+  export const selectPostsByUser = createSelector(
+    [selectAllPosts, (state, userId) => userId],
+    (posts, userId) => posts.filter(post => post.user === userId)
+  )
+//...
+```
+
+`createSelector` takes one or more "input selector" functions as argument, plus an "output selector" function. When we
+call `selectPostsByUser(state, userId)`, `createSelector` will pass all of the arguments into each of our input selectors.
+Whatever those input selectors return becomes the arguments for the output selector.
