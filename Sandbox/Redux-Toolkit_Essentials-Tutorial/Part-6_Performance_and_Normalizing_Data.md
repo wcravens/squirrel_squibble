@@ -95,3 +95,17 @@ Use Reselect in `features/posts/postsSlice.js`.
 `createSelector` takes one or more "input selector" functions as argument, plus an "output selector" function. When we
 call `selectPostsByUser(state, userId)`, `createSelector` will pass all of the arguments into each of our input selectors.
 Whatever those input selectors return becomes the arguments for the output selector.
+
+
+### Investigating the Posts List
+
+If we review the profiler while clicking on the reaction items, we'll see that the whole posts list re-renders every
+time.  Reacts default mode is to re-render all children when a parent changes.
+
+When one post is editted it creates a new posts array.  Since the posts array was a new refrence, `<PostList>` re-rendered
+all of the `<PostExcerpt>` components as well.
+
+A few options to correct this behavior:
+
+- Use `React.memo()` to wrap a component that will memoize props and only re-render when the props have changed.
+- 

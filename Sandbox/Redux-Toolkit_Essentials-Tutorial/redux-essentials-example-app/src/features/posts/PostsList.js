@@ -7,7 +7,7 @@ import { TimeAgo } from "./TimeAgo";
 import { ReactionButtons } from "./ReactionButtons";
 import { selectAllPosts, fetchPosts } from "./postsSlice";
 
-const PostExcerpt = ( { post } ) => {
+const PostExcerpt = React.memo( ( { post } ) => {
   return (
     <article className="post-excerpt" key={post.id}>
       <h3>{post.title}</h3>
@@ -23,7 +23,7 @@ const PostExcerpt = ( { post } ) => {
       </Link>
     </article>
   )
-}
+} )
 
 
 export const PostsList = () => {
