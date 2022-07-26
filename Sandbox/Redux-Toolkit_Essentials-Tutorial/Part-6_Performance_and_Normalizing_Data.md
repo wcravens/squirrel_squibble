@@ -105,7 +105,94 @@ time.  Reacts default mode is to re-render all children when a parent changes.
 When one post is editted it creates a new posts array.  Since the posts array was a new refrence, `<PostList>` re-rendered
 all of the `<PostExcerpt>` components as well.
 
-A few options to correct this behavior:
+Use `React.memo()` to wrap a component that will memoize props and only re-render when the props have changed.
 
-- Use `React.memo()` to wrap a component that will memoize props and only re-render when the props have changed.
-- 
+
+## Normalizing Data
+
+A lot of our logic has been looking up items by their id fields using functions like `.find()` or `.filter()`.  These
+methods are O(n) for any given array.  We can do better by providing both a 'sorted' list of ids along with a lookup
+table that provides O(1) efficientcy.
+
+### Normalizing State Structure
+
+"Normalized state" means that:
+
+- We only have one copy of each particular piece of data in our state, so there's no duplication
+- Data that has been normalized is kept in a lookup table, where the item IDs are the keys, and the items themselves are
+  the values.
+- There may also be an array of all of the IDs for a particular item type
+
+A *normalized* state for our Users may look like:
+
+```js
+{
+  users: {
+    ids: ["user1", "user2", "user3"],
+    entities: {
+      "user1": {id: "user1", firstName, lastName},
+      "user2": {id: "user2", firstName, lastName},
+      "user3": {id: "user3", firstName, lastName},
+    }
+  }
+}
+```
+
+This way we can extract both a sorted list and lookup users individually by id.
+
+```js
+const userId = 'user2'
+const user = state.users.entities[userId]
+```
+
+### Managing Normalized State with `createEntityAdapter`
+
+Redux Toolkit's `createEntityAdapter` API provides a standardized way to store your data in a slice by taking a
+collection of items and putting them into the shape of `{ ids: [], entities: {} }`. Along with this predefined state
+shape, it generates a set of reducer functions and selectors that know how to work with that data.
+
+This has several benefits:
+
+- We don't have to write the code to manage the normalization ourselves
+- `createEntityAdapter`'s pre-built reducer functions handle common cases like "add all these items", "update one item",
+  or "remove multiple items"
+- `createEntityAdapter` can keep the ID array in a sorted order based on the contents of the items, and will only update
+  that array if items are added / removed or the sorting order changes.
+
+`createEntityAdapter` accepts an options object that may include a `sortComparer` function, which will be used to keep
+the item IDs array in sorted order by comparing two items (and works the same way as `Array.sort()`).
+
+`createEntityAdapter` returns a set of CRUD reducer functions: 
+
+- `addOne`: accepts a single entity, and adds it if it's not already present.
+- `addMany`: accepts an array of entities or an object in the shape of Record<EntityId, T>, and adds them if not already present.
+- `setOne`: accepts a single entity and adds or replaces it
+- `setMany`: accepts an array of entities or an object in the shape of Record<EntityId, T>, and adds or replaces them.
+- `setAll`: accepts an array of entities or an object in the shape of Record<EntityId, T>, and replaces all existing entities with the values in the array.
+- `removeOne`: accepts a single entity ID value, and removes the entity with that ID if it exists.
+- `removeMany`: accepts an array of entity ID values, and removes each entity with those IDs if they exist.
+- `removeAll`: removes all entities from the entity state object.
+- `updateOne`: accepts an "update object" containing an entity ID and an object containing one or more new field values to update inside a changes field, and performs a shallow update on the corresponding entity.
+- `updateMany`: accepts an array of update objects, and performs shallow updates on all corresponding entities.
+- `upsertOne`: accepts a single entity. If an entity with that ID exists, it will perform a shallow update and the specified fields will be merged into the existing entity, with any matching fields overwriting the existing values. If the entity does not exist, it will be added.
+- `upsertMany`: accepts an array of entities or an object in the shape of Record<EntityId, T> that will be shallowly upserted.
+
+Each method has the following signature:
+
+```js
+(state: EntityState<T>, argument: TypeOrPayloadAction<Argument<T>>) => EntityState<T>
+```
+
+The entity adapter will also contain a getSelectors() function that returns a set of selectors that know how to read the
+contents of an entity state object:
+
+- `selectIds`: returns the state.ids array.
+- `selectEntities`: returns the state.entities lookup table.
+- `selectAll`: maps over the state.ids array, and returns an array of entities in the same order.
+- `selectTotal`: returns the total number of entities being stored in this state.
+- `selectById`: given the state and an entity ID, returns the entity with that ID or undefined.
+
+The adapter also has a `getInitialState` which will return an empty template object. You can pass in more fields and
+they will be merged in.
+
+### Updating the Posts Slice
