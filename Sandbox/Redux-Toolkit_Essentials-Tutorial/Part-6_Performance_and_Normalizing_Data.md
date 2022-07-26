@@ -196,3 +196,9 @@ The adapter also has a `getInitialState` which will return an empty template obj
 they will be merged in.
 
 ### Updating the Posts Slice
+
+...big chunk of work to incorporate the entity adapter.  See commit.
+
+### Converting the Users Slice
+
+### Converting the Notifications Slice

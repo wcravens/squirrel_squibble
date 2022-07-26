@@ -5,9 +5,10 @@ import { Spinner } from '../../components/Spinner'
 import { PostAuthor } from "./PostAuthor";
 import { TimeAgo } from "./TimeAgo";
 import { ReactionButtons } from "./ReactionButtons";
-import { selectAllPosts, fetchPosts } from "./postsSlice";
+import { fetchPosts, selectPostIds, selectPostById } from "./postsSlice";
 
-const PostExcerpt = React.memo( ( { post } ) => {
+const PostExcerpt = ( { postId } ) => {
+  const post = useSelector( state => selectPostById( state, postId ) )
   return (
     <article className="post-excerpt" key={post.id}>
       <h3>{post.title}</h3>
@@ -23,15 +24,15 @@ const PostExcerpt = React.memo( ( { post } ) => {
       </Link>
     </article>
   )
-} )
-
+}
 
 export const PostsList = () => {
   const _dispatch = useDispatch();
 
-  const posts = useSelector( selectAllPosts )
   const postStatus = useSelector( state => state.posts.status )
   const error = useSelector( state => state.posts.error )
+
+  const orderedPostIds = useSelector( selectPostIds )
 
   useEffect( () => {
     if( postStatus === 'idle' )  {
@@ -45,11 +46,8 @@ export const PostsList = () => {
   } else if ( postStatus === 'failed' ) {
     content = <div>{error}</div>
   } else if ( postStatus === 'succeeded' ) {
-    const orderedPosts = posts
-      .slice()
-      .sort( (a,b) => b.date.localeCompare( a.date ) )
-    content = orderedPosts.map( post => (
-      <PostExcerpt key={post.id} post={post} />
+    content = orderedPostIds.map( postId => (
+      <PostExcerpt key={postId} postId={postId} />
     ))
   }
 
