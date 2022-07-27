@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/Entity/Application",
+  "$ref": "/Entity",
+  "properties": {
+    "name": "string",
+    "build": "$ref: #/$defs/build"
+  },
+  "$defs": {
+    "build": {
+      "type": "object",
+      "properties": {
+        "id": "uuid",
+        "datetime": "date-time",
+        "quality": {
+          "enum": [ "pre-alpha", "alpha", "beta", "release-candidate", "release" ]
+        }
+      }
+    }
+  }
+}
