@@ -37,7 +37,7 @@ const ScopeGroup = (props) => {
     return (
         <div className="scope-group">
             {
-                props.component == "Main" ?
+                props.component == "InScope" ?
                     <>
                         <div className='scope-group-header'>
                             <input
@@ -49,26 +49,21 @@ const ScopeGroup = (props) => {
                                 value={values.title}
                             />
                         </div>
-                        <Editor
-                            headingsOffset={2}
-                            onChange={(str) => handleContent(str(), "main")}
-                            placeholder="Content goes here..."
-                            theme={custom}
-                            defaultValue={values.content}
-                        />
                     </>
-                    :
-                    <>
-                        <Editor
-                            headingsOffset={2}
-                            onChange={(str) => handleContent(str(), props.component)}
-                            placeholder="Content goes here..."
-                            theme={custom}
-                            defaultValue={values.content}
-                        />
-
-                    </>
+                    : null
             }
+            <>
+                <div className='scope-group-markdown'>
+                    <Editor
+                        headingsOffset={1}
+                        onChange={(str) => handleContent(str(), props.component)}
+                        placeholder="Content goes here..."
+                        theme={custom}
+                        // defaultValue={values.content}
+                        defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    />
+                </div>
+            </>
         </div >
     )
 }
