@@ -3,43 +3,45 @@ import ScopeGroup from "./ScopeGroup";
 import Sidebar from "./Sidebar";
 import './InScope.css'
 
+const lorem_ipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+
+var scope_group = {
+    id: Math.random(),
+    Title: "Title 1",
+    InScope: lorem_ipsum,
+    Assumptions: lorem_ipsum,
+    Constraints: lorem_ipsum,
+    Risks: lorem_ipsum,
+};
+
+var scope_group2 = {
+    id: Math.random(),
+    Title: "Title 2",
+    InScope: "",
+    Assumptions: "",
+    Constraints: "",
+    Risks: "",
+};
+
+var scope_group3 = {
+    id: Math.random(),
+    Title: "",
+    InScope: "",
+    Assumptions: "",
+    Constraints: "",
+    Risks: "",
+};
+
+var scope_group4 = {
+    id: Math.random(),
+    Title: "",
+    InScope: "",
+    Assumptions: "",
+    Constraints: "",
+    Risks: "",
+};
+
 const InScope = () => {
-    var scope_group = {
-        id: Math.random(),
-        Title: "Title 1",
-        InScope: "",
-        Assumptions: "",
-        Constraints: "",
-        Risks: "",
-    };
-
-    var scope_group2 = {
-        id: Math.random(),
-        Title: "Title 2",
-        InScope: "",
-        Assumptions: "",
-        Constraints: "",
-        Risks: "",
-    };
-
-    var scope_group3 = {
-        id: Math.random(),
-        Title: "Title 3",
-        InScope: "",
-        Assumptions: "",
-        Constraints: "",
-        Risks: "",
-    };
-
-    var scope_group4 = {
-        id: Math.random(),
-        Title: "Title 4",
-        InScope: "",
-        Assumptions: "",
-        Constraints: "",
-        Risks: "",
-    };
-
     const scope_components = ["InScope", "Assumptions", "Constraints", "Risks"];
 
     const [groups, setGroups] = useState([scope_group, scope_group2, scope_group3, scope_group4]);
@@ -71,7 +73,7 @@ const InScope = () => {
                     <h1>Scope Group Editor</h1>
                     {
                         groups.map((group, key) => (
-                            <div id={group.Title}>
+                            <div id={group.id}>
                                 {
                                     scope_components.map((component, key) => (
                                         <>

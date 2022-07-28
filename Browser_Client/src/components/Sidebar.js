@@ -6,8 +6,8 @@ const Sidebar = (groups) => {
         <Menu right noOverlay pageWrapId={"page-wrapper"} outerContainerId={"outer-container"}>
             {
                 groups.groups.map((group, key) => (
-                    <a className="menu-item" href={"#" + group.Title}>
-                        {group.Title}
+                    <a className="menu-item" href={"#" + group.id}>
+                        {group.Title != "" ? group.Title : "No Title"}
                     </a>
                 ))
             }
