@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import PACKAGE from '../package.json';
-import { appInit, subscribeToAppState, subscribeToInfo } from './Squibble_Application';
+import { appInit, subscribeToAppState, subscribeToInfo } from './Application';
 import App from './App';
 import VersionInfo from './components/VersionInfo';
 //import './custom.scss';
@@ -12,6 +12,7 @@ const CONFIG = {
   "pre_release":  PACKAGE.pre_release,
   "build":        process.env.REACT_APP_BUILD_ID
 }
+
 const container = document.getElementById( 'root' )
 const root = createRoot( container )
 
