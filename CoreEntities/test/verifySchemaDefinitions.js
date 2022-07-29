@@ -1,6 +1,7 @@
 const chai = require('chai');
-//const definitionsSchema = require('../EntitySchema/definitions' );
-//chai.use( require( 'chai-json-schema-ajv' ).create( {schemas : [ definitionsSchema ] } ));
+const definitions = require( '../Schema/definitions' );
+import _d from '../Schema/definitions'
+chai.use( require( 'chai-json-schema-ajv' ).create( {schemas : [ definitionsSchema ] } ));
 chai.use( require( 'chai-json-schema-ajv' ) )
 const expect = chai.expect;
 
