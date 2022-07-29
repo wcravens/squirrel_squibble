@@ -1,53 +1,98 @@
 console.log( `Executed at ${ new Date().toISOString() }` )
 
-const demethodize = fn => (arg0, ...args) => fn.apply(arg0, args)
-const pipeline = ( ...fns ) =>
-  fns.reduce( ( result, f ) => (...args) => f(result(...args)))
-const compose = (...fns) => pipeline(...(fns.reverse()));
-const tap =  fn => args  => ( fn(args), args )
-const tee = tap( console.log )
+const Tree = (value, left, right) => (destructure, __) =>
+  destructure(value, left, right);
 
-const removeNonAlpha = str => str.replace(/[^a-z]/gi, " ");
-const toUpperCase = demethodize(String.prototype.toUpperCase);
-const splitInWords = str => str.trim().split(/\s+/);
-const arrayToSet = arr => new Set(arr);
-const setToList = set => Array.from(set).sort();
+const EmptyTree = () => (__, destructure) => destructure();
 
-const testOdd = x => x % 2 === 1;
-const testUnderFifty = x => x < 50;
-const double = x => x + x;
-const addThree = x => x + 3;
+const myTree = Tree(
+  22,
+  Tree(
+    9,
+    Tree(4, EmptyTree(), EmptyTree()),
+    Tree(12, EmptyTree(), EmptyTree())
+  ),
+  Tree(
+    60,
+    Tree(56, EmptyTree(), EmptyTree()),
+    EmptyTree()
+  )
+);
 
-const mapTR = fn => reducer => (accum, value) => reducer(accum, fn(value));
-const filterTR = fn => reducer => (accum, value) => fn(value) ? reducer(accum, value) : accum;
+const myRoot = myTree((value, left, right) => value, () => null);
 
-const testOddR = filterTR(testOdd);
-const testUnderFiftyR = filterTR(testUnderFifty);
-const doubleR = mapTR(double);
-const addThreeR = mapTR(addThree);
+const treeRoot = tree => tree((value, left, right) => value, () => null);
+const treeLeft = tree => tree((value, left, right) => left, () => null);
+const treeRight = tree => tree((value, left, right) => right, () => null);
 
-const addToArray = (a, v) => {
-  a.push(v);
-  return a;
-};
+const treeIsEmpty = tree => tree(() => false, () => true);
 
-const myArray = [22, 9, 60, 24, 11, 63];
+const treeCount = aTree => aTree(
+  (value, left, right) => 1 + treeCount(left) + treeCount(right),
+  () => 0
+);
+console.log(treeCount(myTree));
 
-const a0 = myArray
-  .filter(testOdd)
-  .map(double)
-  .filter(testUnderFifty)
-  .map(addThree);
-console.log( a0 )
+const treeToObject = tree =>
+  tree((value, left, right) => {
+    const leftBranch = treeToObject(left);
+    const rightBranch = treeToObject(right);
+    const result = { value };
+    if (leftBranch) {
+      result.left = leftBranch;
+    }
+    if (rightBranch) {
+      result.right = rightBranch;
+    }
+    return result;
+  }, () => null);
+console.log(treeToObject(myTree));
 
-const a1 = myArray.reduce( testOddR(doubleR(testUnderFiftyR(addThreeR(addToArray)))), [] )
-console.log( a1 )
+const treeSearch = (findValue, tree) =>
+  tree(
+    (value, left, right) =>
+      findValue === value
+        ? true
+        : findValue < value
+          ? treeSearch(findValue, left)
+          : treeSearch(findValue, right),
+    () => false
+  );
 
-const makeReducer = ( arr, fns, reducer = addToArray, initial = [] ) =>
-  arr.reduce( compose( ...fns )(reducer), initial );
-const a2 = makeReducer( myArray, [ testOddR, doubleR, testUnderFiftyR, addThreeR ] );
+const treeInsert = (newValue, tree) =>
+  tree(
+    (value, left, right) =>
+      newValue <= value
+        ? Tree(value, treeInsert(newValue, left), right)
+        : Tree(value, left, treeInsert(newValue, right)),
+    () => Tree(newValue, EmptyTree(), EmptyTree())
+  );
 
-console.log( a2 )
+const compare = (obj1, obj2) =>
+  obj1.key === obj2.key ? 0 : obj1.key < obj2.key ? -1 : 1;
 
-const sum = makeReducer( myArray, [ testOddR, doubleR, testUnderFiftyR, addThreeR ], (acc, value) => acc + value, 0 );
-console.log( sum )
+const treeInsert2 = (comparator, newValue, tree) =>
+  tree(
+    (value, left, right) =>
+      comparator(newValue, value) === 0
+        ? Tree(newValue, left, right)
+        : comparator(newValue, value) < 0
+          ? Tree(
+            value,
+            treeInsert2(comparator, newValue, left),
+            right
+          )
+          : Tree(
+            value,
+            left,
+            treeInsert2(comparator, newValue, right)
+          ),
+    () => Tree(newValue, EmptyTree(), EmptyTree())
+  );
+
+const treeMap = (fn, tree) =>
+  tree(
+    (value, left, right) =>
+      Tree(fn(value), treeMap(fn, left), treeMap(fn, right)),
+    () => EmptyTree()
+  );
