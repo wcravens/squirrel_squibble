@@ -1,0 +1,22 @@
+li {
+    margin-left: 1rem;
+}
+
+.scope-group-header {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-weight: 'bold';
+    font-size: '28px';
+    border: 'none';
+    font-family: 'Times New Roman';
+    width: 100%;
+}
+
+.scope-group-markdown:focus {
+    outline: 2px groove #222842f2;
+    padding: 3px;
+}
+
+.scope-group-markdown {
+    padding: 3px;
+}
