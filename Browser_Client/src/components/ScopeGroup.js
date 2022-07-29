@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Editor, { base } from 'rich-markdown-editor'
 import custom from './theme';
-import './ScopeGroup.css'
 
 const ScopeGroup = (props) => {
 
@@ -11,6 +10,8 @@ const ScopeGroup = (props) => {
         content: props.value,
         component: props.component
     })
+
+    const [focused, setFocus] = useState(false);
 
     useEffect(() => {
         props.handleChange(values);
@@ -32,6 +33,14 @@ const ScopeGroup = (props) => {
                 content: str
             }
         })
+    }
+
+    const handleFocus = () => {
+        setFocus(true);
+    }
+
+    const handleBlur = () => {
+        setFocus(false);
     }
 
     return (
@@ -60,6 +69,8 @@ const ScopeGroup = (props) => {
                         placeholder="Content goes here..."
                         theme={custom}
                         defaultValue={values.content}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
                     />
                 </div>
             </>

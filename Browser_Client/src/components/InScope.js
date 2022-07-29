@@ -7,8 +7,8 @@ const lorem_ipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se
 
 var scope_group = {
     id: Math.random(),
-    Title: "Title 1",
-    InScope: lorem_ipsum,
+    Title: "This Is an Editable Title",
+    InScope: "This is a **markdown** editor",
     Assumptions: lorem_ipsum,
     Constraints: lorem_ipsum,
     Risks: lorem_ipsum,
@@ -65,7 +65,7 @@ const InScope = () => {
 
     return (
         <div id="outer-container">
-            {editorView ? <Sidebar groups={groups} /> : null}
+            {editorView ? <Sidebar groups={groups} isEditor={true} /> : <Sidebar groups={scope_components} isEditor={false} />}
             <button onClick={handleView}> Toggle View </button>
 
             {editorView ?
@@ -102,7 +102,7 @@ const InScope = () => {
                     {
                         scope_components.map((component, key) => (
 
-                            <>
+                            <div id={component}>
                                 <div className='scope-group-header' style={{ fontWeight: 'bold', fontSize: '24px', border: 'none', fontFamily: 'Times New Roman' }}>
                                     {component != "InScope" ? component : "In-Scope"}
                                 </div>
@@ -119,7 +119,7 @@ const InScope = () => {
                                         </li>
                                     ))
                                 }
-                            </>
+                            </div>
                         ))
                     }
                 </>
