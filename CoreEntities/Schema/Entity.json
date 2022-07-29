@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "id": "uuid",
-    "type": "string",
+    "type": ,"string",
     "created_on": "date-time",
     "updated_on": "date-time",
     "entity_type": "uri-reference",

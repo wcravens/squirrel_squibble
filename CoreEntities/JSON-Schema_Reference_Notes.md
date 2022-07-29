@@ -186,7 +186,7 @@ dependentSchemas   // Applied like the use of `allOf`
 
 URI terminology can sometimes be unintuitive. In this document, the following definitions are used.
 
-- [URI](https://datatrker.ietf.org/doc/html/rfc3986#section-3) or non-relative URI: A full URI containing a scheme (https). It may contain a URI fragment (#foo). Sometimes this document will use “non-relative URI” to make it extra clear that relative URIs are not allowed.
+- [URI](https://datatracker.ietf.org/doc/html/rfc3986#section-3) or non-relative URI: A full URI containing a scheme (https). It may contain a URI fragment (#foo). Sometimes this document will use “non-relative URI” to make it extra clear that relative URIs are not allowed.
 - [relative reference](https://datatracker.ietf.org/doc/html/rfc3986#section-4.2): A partial URI that does not contain a scheme (https). It may contain a fragment (#foo).
 - [URI-reference](https://datatracker.ietf.org/doc/html/rfc3986#section-4.1): A relative reference or non-relative URI. It may contain a URI fragment (#foo).
 - [absolute URI](https://datatracker.ietf.org/doc/html/rfc3986#section-4.3): A full URI containing a scheme (https) but not a URI fragment (#foo).
