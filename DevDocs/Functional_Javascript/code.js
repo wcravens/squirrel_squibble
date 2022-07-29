@@ -2,15 +2,6 @@
 
 console.log( `Executed at ${ new Date().toISOString() }` )
 
-const fakeAPI = ( delay, value ) => new Promise( resolve => setTimeout( () => resolve(value), delay ) )
-const useResult = x => console.log(new Date(), x);
-const mapAsync = (arr, fn) => Promise.all(arr.map(fn));
-(async () => {
-  console.log("START MAP");
-  const mapped = await mapAsync([1, 2, 3, 4], async n => {
-    const x = await fakeAPI(n * 1000, n);
-    return x;
-  });
-  useResult(mapped);
-  console.log("END MAP");
-})();
+const findOptimum = arr => Math.max( ...arr )
+const array = [22, 9, 60, 12, 4, 56]
+console.log( findOptimum( array ) )
