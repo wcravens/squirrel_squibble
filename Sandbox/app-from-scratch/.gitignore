@@ -1,0 +1,9 @@
+# Vim
+*.swp
+*.swo
+
+# Jetbrains
+.idea
+
+# NodeJS
+node_modules
