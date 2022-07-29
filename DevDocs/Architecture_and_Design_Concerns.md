@@ -95,6 +95,10 @@ We'll use JSON Schema to validate data structures such as Value Objects.
 Since Javascript permits it, we should leverage Functional Programming techniques as much as possible.  At a minimum we
 should implement as much functionality as possible in pure functions.
 
+[Ramda](https://ramdajs.com/)
+[Primer on Functional Arcitecture](https://increment.com/software-architecture/primer-on-functional-architecture/)
+[Functional Architecture](https://devonburriss.me/fp-architecture/)
+
 ## Immutability
 
 Value Objects will be immutable according to DDD, however we will strive to have everything on the inside of the outer
