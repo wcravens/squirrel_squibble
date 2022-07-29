@@ -1,12 +1,16 @@
 
 
+console.log( `Executed at ${ new Date().toISOString() }` )
 
-const increment = _ => _ + 1
-
-let state = 0
-state = increment( state )
-console.log( state )
-state = increment( state )
-console.log( state )
-state = increment( state )
-console.log( state )
+const fakeAPI = ( delay, value ) => new Promise( resolve => setTimeout( () => resolve(value), delay ) )
+const useResult = x => console.log(new Date(), x);
+const mapAsync = (arr, fn) => Promise.all(arr.map(fn));
+(async () => {
+  console.log("START MAP");
+  const mapped = await mapAsync([1, 2, 3, 4], async n => {
+    const x = await fakeAPI(n * 1000, n);
+    return x;
+  });
+  useResult(mapped);
+  console.log("END MAP");
+})();

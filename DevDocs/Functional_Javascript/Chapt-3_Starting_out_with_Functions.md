@@ -104,7 +104,7 @@ fetch( "some/url").then( process )
 
 ... now read on.
 
-in lambda calculus terms, we are replacing ***λx.func x*** with simply ***func*** —this is called an **eta conversion**,
+In lambda calculus terms, we are replacing ***λx.func x*** with simply ***func*** —this is called an **eta conversion**,
 or more specifically, an **eta reduction**. (If you were to do it the other way round, it would be an **eta
 abstraction**.) In our case, it could be considered a (very, very small!) optimization, but its main advantage is
 shorter, more compact code.
@@ -175,7 +175,7 @@ const lengthOfFile = fileName => fs.readFile (fileName, ( err, data ) => err
   : console.log( `Data is ${data.length} long.` )
 )
 lengthOfFile( 'something.txt' )
-lengthOfFile( 'Part_0.md' )
+lengthOfFile( 'Chapt-0.md' )
 ```
 
 ***Promises*** are a more modern way to handle async functionality.  [ See Promise @ MDN ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
