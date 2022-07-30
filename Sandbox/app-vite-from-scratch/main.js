@@ -19,4 +19,4 @@ document.querySelector('#app').innerHTML = `
   </div>
 `
 
-console.log( APP_NAME + ' ' + APP_VERSION )
+console.log( "Initializing the Application: " + APP_NAME + ' ' + APP_VERSION )

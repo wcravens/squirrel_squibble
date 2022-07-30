@@ -6,7 +6,7 @@ export default defineConfig( async( {command, mode } ) => {
   return {
     define: {
       APP_VERSION: JSON.stringify( response.APP_VERSION ),
-      APP_NAME: JSON.stringify( response.APP_NAME )
+      APP_NAME:    JSON.stringify( response.APP_NAME )
     }
   }
 })
