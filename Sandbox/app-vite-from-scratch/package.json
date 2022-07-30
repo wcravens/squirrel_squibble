@@ -1,5 +1,5 @@
 {
-  "name": "app-vite-from-scratch",
+  "name": "Squibbler",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,6 +9,10 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^3.0.1",
+    "pouchdb": "^7.3.0",
+    "pubsub-js": "^1.9.4",
+    "simple-git": "^3.11.0",
     "vite": "^3.0.0"
   }
 }
