@@ -8,9 +8,12 @@ const Themes = { Bootstrap, Zephyr, Cosmo, Sketchy, Flatly }
 
 export const listAvailableThemes = () => Object.keys( Themes )
 
-export const switchTheme = ( name ) => {
-  console.log( "Attempting to switch to " + name + " theme." )
-  if( document.querySelector('style') ) document.querySelector('style').remove()
+export const insertStyleElementWithTheme = ( name ) =>
   document.head.insertAdjacentHTML( 'beforeend', `<style>${ Themes[ name ] }</style>` )
-}
 
+export const removeAllStyleElementsFromHead = () => document.head.querySelectorAll( 'style' ).forEach( _ => _.remove() )
+
+export const switchTheme = ( name ) => {
+  removeAllStyleElementsFromHead()
+  insertStyleElementWithTheme( name )
+}

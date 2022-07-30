@@ -1,8 +1,14 @@
 import javascriptLogo from './javascript.svg'
 import bootstrap   from 'bootstrap/dist/js/bootstrap'
-import { listAvailableThemes, switchTheme } from "./StyleThemes.js";
+import {
+  insertStyleElementWithTheme,
+  listAvailableThemes,
+  removeAllStyleElementsFromHead,
+  switchTheme
+} from "./StyleThemes.js";
 
-switchTheme( 'Bootstrap' )
+insertStyleElementWithTheme( 'Bootstrap' )
+//switchTheme( 'Sketchy'  )
 
 document.querySelector('#app').innerHTML = `
   <div>
