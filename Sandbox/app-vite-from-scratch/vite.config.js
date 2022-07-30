@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import { loadConfig } from "./loadConfig.js";
 import { createHtmlPlugin } from "vite-plugin-html"
+import * as path from 'path'
 
 export default defineConfig( async( {command, mode } ) => {
   const response = await loadConfig()
@@ -11,6 +12,12 @@ export default defineConfig( async( {command, mode } ) => {
     define: {
       APP_VERSION: JSON.stringify( response.APP_VERSION ),
       APP_NAME:    JSON.stringify( response.APP_NAME )
+    },
+    resolve: {
+      alias: {
+        '~bootstrap': path.resolve( __dirname, 'node_modules/bootstrap' ),
+        '~bootswatch': path.resolve( __dirname, 'node_modules/bootswatch' ),
+      }
     }
   }
 })
