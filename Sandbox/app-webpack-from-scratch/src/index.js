@@ -1,2 +1,2 @@
-console.log( 'app-from-scratch: initialized' )
-document.querySelector('#fromjs').innerHTML = '<h2>Inserted from index.js.</h2>'
+import PACKAGE from '../package.json'
+document.querySelector('#container').innerHTML = `<pre>${PACKAGE.name} ${VERSION}\nLast Commit: ${COMMITHASH} ${LASTCOMMITDATETIME}</pre>`
