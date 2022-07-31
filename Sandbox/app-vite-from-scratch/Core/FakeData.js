@@ -1,5 +1,4 @@
 import { LoremIpsum } from "lorem-ipsum";
-import { nanoid } from "nanoid";
 import { faker } from '@faker-js/faker'
 // https://github.com/faker-js/faker
 
@@ -18,5 +17,6 @@ const newRandomProjectData = () => {
 
 const prepareForStorage = ( data ) =>(
   { ...data, type: 'Project', _id: nanoid(), created_on: new Date().toISOString(), updated_on: null,  } )
-
 export const newProjectData = () => prepareForStorage( newRandomProjectData() )
+
+
