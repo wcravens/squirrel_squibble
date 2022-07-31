@@ -14,10 +14,9 @@
     "@faker-js/faker": "^7.3.0",
     "ajv": "^8.11.0",
     "ajv-formats": "^2.1.1",
-    "json-schema-ref-parser": "^9.0.9",
     "lorem-ipsum": "^2.0.8",
     "pouchdb": "^7.3.0",
-    "simple-git": "^3.11.0",
-    "validjson": "^0.1.0"
+    "pubsub-js": "^1.9.4",
+    "simple-git": "^3.11.0"
   }
 }
