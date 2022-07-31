@@ -1,0 +1,22 @@
+{
+  "name": "Squibble",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^7.3.0",
+    "ajv": "^8.11.0",
+    "ajv-formats": "^2.1.1",
+    "json-schema-ref-parser": "^9.0.9",
+    "lorem-ipsum": "^2.0.8",
+    "pouchdb": "^7.3.0",
+    "simple-git": "^3.11.0"
+  }
+}
