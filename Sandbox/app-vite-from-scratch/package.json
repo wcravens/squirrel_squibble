@@ -17,6 +17,7 @@
     "bootstrap": "^5.2.0",
     "bootswatch": "^5.2.0",
     "causal": "^0.0.3",
+    "json-schema-ref-parser": "^9.0.9",
     "lorem-ipsum": "^2.0.8",
     "pouchdb": "^7.3.0",
     "pubsub-js": "^1.9.4",
