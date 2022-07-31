@@ -9,10 +9,15 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.3.0",
     "@popperjs/core": "^2.11.5",
     "@reduxjs/toolkit": "^1.8.3",
+    "ajv": "^8.11.0",
+    "ajv-formats": "^2.1.1",
     "bootstrap": "^5.2.0",
     "bootswatch": "^5.2.0",
+    "causal": "^0.0.3",
+    "lorem-ipsum": "^2.0.8",
     "pouchdb": "^7.3.0",
     "pubsub-js": "^1.9.4",
     "simple-git": "^3.11.0",

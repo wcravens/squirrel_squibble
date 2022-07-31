@@ -1,7 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "/Entity/Application",
-  "$ref": "/Entity",
   "properties": {
     "name": "string",
     "build": "$ref: #/$defs/build"
