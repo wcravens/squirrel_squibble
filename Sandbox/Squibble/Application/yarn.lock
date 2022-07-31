@@ -501,6 +501,11 @@ uuid@8.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
+validjson@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/validjson/-/validjson-0.1.0.tgz#926b3212b2360b5d37eb6fe3b3d27d991f07e9fa"
+  integrity sha512-3ZdBiicShceaUNiUAFY+bd02ewXuCr2IqE4EeSiRKUuVA3tXeVyj0ugnf6bVrMdMtBp6N9bORSum2FAVxaoD8g==
+
 vuvuzela@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/vuvuzela/-/vuvuzela-1.0.3.tgz#3be145e58271c73ca55279dd851f12a682114b0b"

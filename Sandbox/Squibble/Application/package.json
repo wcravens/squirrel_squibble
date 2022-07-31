@@ -17,6 +17,7 @@
     "json-schema-ref-parser": "^9.0.9",
     "lorem-ipsum": "^2.0.8",
     "pouchdb": "^7.3.0",
-    "simple-git": "^3.11.0"
+    "simple-git": "^3.11.0",
+    "validjson": "^0.1.0"
   }
 }
