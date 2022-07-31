@@ -1,5 +1,6 @@
 import Ajv from 'ajv/dist/2020.js'
 import addFormats from "ajv-formats"
+
 const ENTITY_DECORATOR_SCHEMA = {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id":         "/Entity",
