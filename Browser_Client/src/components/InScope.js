@@ -3,76 +3,41 @@ import ScopeGroup from "./ScopeGroup";
 import Sidebar from "./Sidebar";
 import './InScope.css'
 
-const lorem_ipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+const InScope = (props) => {
+    const scope_components = ["InScope", "Assumptions", "Constraints", "Risks", "Dependencies"];
+    const decision_components = ["Assumptions", "Constraints", "Risks", "Dependencies"];
 
-var scope_group = {
-    id: Math.random(),
-    Title: "This Is an Editable Title",
-    InScope: "This is a **markdown** editor",
-    Assumptions: lorem_ipsum,
-    Constraints: lorem_ipsum,
-    Risks: lorem_ipsum,
-};
-
-var scope_group2 = {
-    id: Math.random(),
-    Title: "Title 2",
-    InScope: "",
-    Assumptions: "",
-    Constraints: "",
-    Risks: "",
-};
-
-var scope_group3 = {
-    id: Math.random(),
-    Title: "",
-    InScope: "",
-    Assumptions: "",
-    Constraints: "",
-    Risks: "",
-};
-
-var scope_group4 = {
-    id: Math.random(),
-    Title: "",
-    InScope: "",
-    Assumptions: "",
-    Constraints: "",
-    Risks: "",
-};
-
-const InScope = () => {
-    const scope_components = ["InScope", "Assumptions", "Constraints", "Risks"];
-
-    const [groups, setGroups] = useState([scope_group, scope_group2, scope_group3, scope_group4]);
-
-    const [editorView, setEditorView] = useState(true);
-
-    const handleView = () => {
-        setEditorView(!editorView);
-    }
+    // const [groups, setGroups] = useState([scope_group, scope_group2, scope_group3, scope_group4]);
+    // const [groups, setGroups] = useState(props.scopeGroups);
 
     const handleChange = (values) => {
-        const index = groups.map((g) => g.id).indexOf(values.id);
-        var newGroups = groups;
+
+        const index = props.scopeGroups.map((g) => g.id).indexOf(values.id);
+        var newGroups = props.scopeGroups;
         newGroups[index][values.component] = values.content;
         if (values.component === "InScope") {
             newGroups[index].Title = values.title;
         }
-        setGroups(newGroups);
-        console.log(groups);
+        props.setStructure(prev => {
+            return {
+                ...prev,
+                in_scope: newGroups,
+            }
+        })
+        // props.handleChange(values);
+        // console.log(groups);
     }
 
     return (
         <div id="outer-container">
-            {editorView ? <Sidebar groups={groups} isEditor={true} /> : <Sidebar groups={scope_components} isEditor={false} />}
-            <button onClick={handleView}> Toggle View </button>
 
-            {editorView ?
+
+            {props.editorView ?
                 <div id="page-wrapper">
+
                     <h1>Scope Group Editor</h1>
                     {
-                        groups.map((group, key) => (
+                        props.scopeGroups.map((group, key) => (
                             <div id={group.id}>
                                 {
                                     scope_components.map((component, key) => (
@@ -98,25 +63,30 @@ const InScope = () => {
 
                 </div>
                 : <>
-                    <h1>IA View</h1>
+                    {/* <h1>IA View</h1> */}
                     {
-                        scope_components.map((component, key) => (
-
+                        decision_components.map((component, key) => (
                             <div id={component}>
-                                <div className='scope-group-header' style={{ fontWeight: 'bold', fontSize: '24px', border: 'none', fontFamily: 'Times New Roman' }}>
-                                    {component != "InScope" ? component : "In-Scope"}
+                                <div className='scope-group-header' style={{ fontWeight: 'bold', fontSize: '16px', border: 'none', fontFamily: 'Times New Roman' }}>
+                                    <h2>{component}</h2>
                                 </div>
                                 {
-                                    groups.map((group, key) => (
-                                        <li>
-                                            <ScopeGroup
-                                                title={group.Title}
-                                                value={group[component]}
-                                                id={group.id}
-                                                handleChange={handleChange}
-                                                component={component}
-                                            />
-                                        </li>
+                                    props.scopeGroups.map((group, key) => (
+                                        <>
+                                            {
+                                                group[component] != "" ?
+                                                    <li>
+                                                        <ScopeGroup
+                                                            title={group.Title}
+                                                            value={group[component]}
+                                                            id={group.id}
+                                                            handleChange={handleChange}
+                                                            component={component}
+                                                        />
+                                                    </li>
+                                                    : null
+                                            }
+                                        </>
                                     ))
                                 }
                             </div>

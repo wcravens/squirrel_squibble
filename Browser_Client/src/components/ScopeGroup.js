@@ -15,6 +15,7 @@ const ScopeGroup = (props) => {
 
     useEffect(() => {
         props.handleChange(values);
+        console.log("Changed");
     }, [values])
 
     const handleTitle = (e) => {
@@ -53,7 +54,7 @@ const ScopeGroup = (props) => {
                                 type="text"
                                 className='scope-group-header'
                                 placeholder="Scope Group Header"
-                                style={{ fontWeight: 'bold', fontSize: '28px', border: 'none', fontFamily: 'Times New Roman' }}
+                                style={{ fontWeight: 'bold', fontSize: '20px', border: 'none', fontFamily: 'Times New Roman' }}
                                 onChange={handleTitle}
                                 value={values.title}
                             />
