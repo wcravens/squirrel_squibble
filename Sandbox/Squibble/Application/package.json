@@ -12,11 +12,17 @@
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^7.3.0",
+    "@reduxjs/toolkit": "^1.8.3",
+    "acorn": "^8.8.0",
     "ajv": "^8.11.0",
     "ajv-formats": "^2.1.1",
     "lorem-ipsum": "^2.0.8",
     "pouchdb": "^7.3.0",
     "pubsub-js": "^1.9.4",
+    "redux-batched-subscribe": "^0.1.6",
+    "redux-logger": "^3.0.6",
+    "rollup": "^2.77.2",
+    "rollup-plugin-import-assertions": "^0.3.0",
     "simple-git": "^3.11.0"
   }
 }
