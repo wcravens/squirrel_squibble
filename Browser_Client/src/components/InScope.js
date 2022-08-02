@@ -35,7 +35,7 @@ const InScope = (props) => {
             {props.editorView ?
                 <div id="page-wrapper">
 
-                    <h1>Scope Group Editor</h1>
+                    {/* <h1>Scope Group Editor</h1> */}
                     {
                         props.scopeGroups.map((group, key) => (
                             <div id={group.id}>
