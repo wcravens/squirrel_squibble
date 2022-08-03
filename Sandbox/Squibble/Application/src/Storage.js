@@ -6,8 +6,8 @@ export const initStorage = async ( name ) =>
     const db = await new PouchDB( "./data/"+name );
     return await db.info();
   } catch (err) {
-    throw `Error: ${err}`;
-    return false;
+    console.log( `Error: ${err}` );
+    return undefined;
   }
 };
 
