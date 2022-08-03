@@ -1,7 +1,7 @@
-import { initConfig   } from "./Config.js";
-import { initDispatch } from "./Dispatch.js";
-import { initStorage  } from "./Storage.js";
-import { initCore     } from "./Core.js";
+import { initConfig   } from "./src/Config.js";
+import { initDispatch } from "./src/Dispatch.js";
+import { initStorage  } from "./src/Storage.js";
+import { initCore     } from "./src/Core.js";
 
 const dispatch = initDispatch()
 
