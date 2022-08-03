@@ -15,7 +15,6 @@ const ScopeGroup = (props) => {
 
     useEffect(() => {
         props.handleChange(values);
-        console.log("Changed");
     }, [values])
 
     const handleTitle = (e) => {
