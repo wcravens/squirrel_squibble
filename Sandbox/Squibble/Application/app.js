@@ -3,16 +3,16 @@ import { initDispatch } from "./src/Dispatch.js";
 import { initStorage  } from "./src/Storage.js";
 import { initCore     } from "./src/Core.js";
 
-const dispatch = initDispatch()
+const dispatch = initDispatch();
 
 const initApp = async () => {
   try {
-    const config        = await initConfig();
+    const config        = initConfig();
     config.STORAGE_INFO = await initStorage( config.APP_VERSION );
     return config;
   } catch ( error ) {
     console.log( `Error: ${error}` );
-    return undefined
+    return undefined;
   }
 };
 

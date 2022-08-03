@@ -1,3 +1,3 @@
-import PubSub from 'pubsub-js'
+import PubSub from 'pubsub-js';
 
-export const initDispatch = () => ({})
+export const initDispatch = () => ({});

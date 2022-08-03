@@ -1,4 +1,4 @@
-import PouchDB from 'pouchdb'
+import PouchDB from 'pouchdb';
 
 export const initStorage = async ( name ) =>
 {
@@ -7,8 +7,8 @@ export const initStorage = async ( name ) =>
     return await db.info();
   } catch (err) {
     throw `Error: ${err}`;
-    return false
+    return false;
   }
-}
+};
 
 

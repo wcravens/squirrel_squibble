@@ -1,2 +1,1 @@
-
-export const initCore = () => ({})
+export const initCore = () => ({});

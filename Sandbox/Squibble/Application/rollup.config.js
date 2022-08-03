@@ -1,9 +1,25 @@
-import importAssertions from 'rollup-plugin-import-assertions';
+import gitInfo from 'rollup-plugin-git-info'
+import eslint from '@rollup/plugin-eslint'
+
+//import replace from '@rollup/plugin-replace'
+//import { babel } from '@rollup/plugin-babel'
+//import json   from '@rollup/plugin-json'
+//import { nodeResolve } from '@rollup/plugin-node-resolve'
+//import commonjs from '@rollup/plugin-commonjs'
 
 export default {
-  input: 'src/main.js',
+  input: 'app.js',
   output: {
-    dir: '.'
+    file: './build/main.js',
+    format: 'es',
+    sourcemap: 'inline'
   },
-  plugins: [importAssertions()]
+  plugins: [
+    gitInfo( { commitHashCommand: 'describe', versionFormat: '[commitHash]'}),
+    eslint()
+    //json(),
+    //babel( { exclude: 'node_modules', babelHelpers: 'bundled' } ),
+    //commonjs(),
+    //nodeResolve()
+  ]
 };
