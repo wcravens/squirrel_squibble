@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+    "rollup": "rollup -cw",
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "redux-batched-subscribe": "^0.1.6",
     "redux-logger": "^3.0.6",
     "rollup": "^2.77.2",
+    "rollup-plugin-git-info": "^1.0.0",
     "rollup-plugin-import-assertions": "^0.3.0",
     "simple-git": "^3.11.0"
   }
