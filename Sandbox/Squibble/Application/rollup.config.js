@@ -11,9 +11,5 @@ export default {
   plugins: [
     gitInfo( { commitHashCommand: 'describe', versionFormat: '[commitHash]'}),
     eslint()
-    //json(),
-    //babel( { exclude: 'node_modules', babelHelpers: 'bundled' } ),
-    //commonjs(),
-    //nodeResolve()
   ]
 };
