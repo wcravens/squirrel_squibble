@@ -5,10 +5,13 @@
   "description": "At a minimum a unique ID must be association with a data structure to classify as an entity.",
   "type": "object",
   "properties": {
-    "_id":        { "type": "string", "minLength": 16, "pattern": "[A-Za-z0-9-_]" },
-    "class":      { "type": "string", "const": "Entity/Decorators" },
+    "_id":        { "$ref": "/_id" },
+    "resource":      {
+      "type": "string",
+      "enum": [ "/Application", "/Project", "/Ticket", "/User", "/Action" ]
+    },
     "created_on": { "type": "string" },
     "updated_on": { "type": "string" }
   },
-  "required": ["_id", "class", "created_on" ]
+  "required": ["_id", "resource", "created_on" ]
 }

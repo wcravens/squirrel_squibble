@@ -3,10 +3,10 @@
   "$id": "/Action",
   "type": "object",
   "$ref": "/Entity",
-  "properties":{
-    "user":       { "$ref": "/User#$id" },
+  "properties": {
+    "user":       { "$ref": "/_id" },
     "event_type": { "type": "string", "format": "uri-reference" },
     "payload":    { "type": "string", "$comment": "This will be JSON, but it could be anything" }
   },
-  "required": [ "user_id", "event_type", "payload" ]
+  "required": [ "user", "event_type", "payload" ]
 }

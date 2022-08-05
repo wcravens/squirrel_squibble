@@ -1,9 +1,11 @@
 import PouchDB from 'pouchdb';
+import Core from './Core.js'
 
+let db
 export const initStorage = async ( name ) =>
 {
   try {
-    const db = await new PouchDB( "./data/"+name );
+    db = await new PouchDB( "./data/"+name );
     return await db.info();
   } catch (err) {
     console.log( `Error: ${err}` );
@@ -11,4 +13,6 @@ export const initStorage = async ( name ) =>
   }
 };
 
+export const get = (id) => db.get( id );
 
+export const put = ( obj ) => db.put( Core( obj ) );

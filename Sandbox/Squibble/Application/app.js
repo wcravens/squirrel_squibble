@@ -3,8 +3,6 @@ import { initDispatch } from "./src/Dispatch.js";
 import { initStorage  } from "./src/Storage.js";
 import { initCore     } from "./src/Core.js";
 
-const dispatch = initDispatch();
-
 const initApp = async () => {
   try {
     const config        = initConfig();
@@ -18,5 +16,6 @@ const initApp = async () => {
 
 const CONFIG = initApp();
 CONFIG.then( console.log );
+
 
 //(function wait () { { console.log( 'Waiting...' + CONFIG ) ; setTimeout( wait, 1000 ) }} )();
