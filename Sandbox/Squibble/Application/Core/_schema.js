@@ -4,8 +4,8 @@ import fs from 'fs';
 const ajv = new Ajv();
 addFormats( ajv );
 
-ajv.addSchema( fs.readdirSync( './Schema' ).map(
-  _ => JSON.parse( fs.readFileSync( 'Schema/'+_, {encoding: "utf-8" } ) )
+ajv.addSchema( fs.readdirSync( './Core/Schema' ).map(
+  _ => JSON.parse( fs.readFileSync( 'Core/Schema/'+_, {encoding: "utf-8" } ) )
 ));
 
 if ( ajv.errors ) throw ajv.errors;

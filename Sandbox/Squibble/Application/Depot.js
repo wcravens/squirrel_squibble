@@ -5,7 +5,7 @@ let db = undefined;
 
 export const initDepot = async ( name ) => {
   try {
-    db = await new PouchDB( "./data/" + name );
+    db = await new PouchDB( "./_data/" + name );
     return await db.info();
   } catch (err) {
     console.log( `Error: ${err}` );
