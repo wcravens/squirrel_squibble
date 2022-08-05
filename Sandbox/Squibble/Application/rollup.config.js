@@ -1,5 +1,5 @@
-import gitInfo from 'rollup-plugin-git-info'
-import eslint from '@rollup/plugin-eslint'
+import gitInfo from 'rollup-plugin-git-info';
+import eslint from '@rollup/plugin-eslint';
 
 export default {
   input: 'app.js',
@@ -9,7 +9,7 @@ export default {
     sourcemap: 'inline'
   },
   plugins: [
-    gitInfo( { commitHashCommand: 'describe', versionFormat: '[commitHash]'}),
+    gitInfo( { commitHashCommand: 'describe', versionFormat: '[commitHash]' } ),
     eslint()
   ]
 };

@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "rollup": "rollup -cw",
-    "main": "main.js"
+    "main": "node build/main.js"
   },
   "keywords": [],
   "author": "",
