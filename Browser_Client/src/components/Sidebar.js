@@ -22,7 +22,7 @@ const Sidebar = (props) => {
                 {
                     props.titles.map((group, key) => (
                         <a className="menu-item" href={"#" + group.id}>
-                            {group.Title != "" ? group.Title : "No Title"}
+                            {group.InScope.Title != "" ? group.InScope.Title : "No Title"}
                         </a>
                     ))
                 }

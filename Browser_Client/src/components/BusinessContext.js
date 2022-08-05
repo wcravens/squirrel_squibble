@@ -5,85 +5,31 @@ import ScopeGroup from './ScopeGroup';
 import custom from './theme';
 import Sidebar from './Sidebar';
 
+// example structure
+// var example_structure = {
+//     objectives: "",
+//     background: "",
+//     in_scope: [scope_group, scope_group2],
+//     out_of_scope: "",
+//     separately_specified_scope: "",
+// }
+
 const proper_components = { objectives: "Objectives", background: "Background", in_scope: "In-Scope", out_of_scope: "Out-of-Scope", separately_specified_scope: "Separately Specified Scope" };
 const components = ["objectives", "background", "in_scope", "out_of_scope", "separately_specified_scope"];
 const components_wo_in = ["objectives", "background", "out_of_scope", "separately_specified_scope"];
 const decision_components = ["Assumptions", "Constraints", "Risks", "Dependencies"];
 
-var scope_object = {
+/**
+ * @param props: structure
+ */
+const BusinessContext = (props) => {
 
-}
-
-var scope_group = {
-    id: Math.random(),
-    Title: "Scope Group Title",
-    InScope: "This is a **markdown** editor",
-    Assumptions: "This assumption is tied to the **first scope group**",
-    Constraints: "This is to the first as well",
-    Risks: "... and so on",
-    Dependencies: "The first scope group's dependencies",
-};
-
-var scope_group2 = {
-    id: Math.random(),
-    Title: "Scope Group Title 2",
-    InScope: "- Scope object \n\t - child point",
-    Assumptions: "And this is tied to the **second scope group**",
-    Constraints: "And this to the second",
-    Risks: "*... on and on*",
-    Dependencies: "The second scope group's dependencies",
-};
-
-const BusinessContext = () => {
-
-    // const [example_structure, setStructure] = useState({
-    //     objectives: "- This is the list\n- Of objectives",
-    //     background: "Paragraph for background",
-    //     in_scope: [scope_group, scope_group2],
-    //     out_of_scope: "- Another list\n- With multiple items",
-    //     separately_specified_scope: "The separately specified scope's contents",
-    // })
-
-    const [example_structure, setStructure] = useState({
-        objectives: "",
-        background: "",
-        in_scope: [scope_group, scope_group2],
-        out_of_scope: "",
-        separately_specified_scope: "",
-    })
+    const [example_structure, setStructure] = useState(props.structure);
 
     const [editorView, setEditorView] = useState(false);
 
     const handleView = () => {
         setEditorView(!editorView);
-    }
-
-    const handlePrint = () => {
-        var str = "# Business Context\n## Objectives\n";
-        str += example_structure.objectives + "\n## Background\n";
-        str += example_structure.background + "\n## In Scope\n"
-        example_structure.in_scope.map((scope) => (
-            str += "### " + scope.Title + "\n" + scope.InScope + ""
-        ));
-        str += "## Out Of Scope\n" + example_structure.out_of_scope + "\n## Separately Specified Scope\n";
-        str += example_structure.separately_specified_scope + "\n\n";
-        str += "# Decision Factors\n## Assumptions\n";
-        example_structure.in_scope.map((scope) => (
-            str += "- " + scope.Assumptions + "\n"
-        ));
-        str += "## Constraints\n";
-        example_structure.in_scope.map((scope) => (
-            str += "- " + scope.Constraints + "\n"
-        ));
-        str += "## Risks\n";
-        example_structure.in_scope.map((scope) => (
-            str += "- " + scope.Risks + "\n"
-        ));
-        str += "## Dependencies\n";
-        example_structure.in_scope.map((scope) => (
-            str += "- " + scope.Dependencies + "\n"
-        ));
-        console.log(str);
     }
 
     const handleChange = (values) => {
@@ -107,8 +53,11 @@ const BusinessContext = () => {
     const handleAdd = () => {
         var new_scope_group = {
             id: Math.random(),
-            Title: "",
-            InScope: "",
+            InScope: {
+                Title: "",
+                Desc: "",
+                Objects: []
+            },
             Assumptions: "",
             Constraints: "",
             Risks: "",
@@ -127,12 +76,11 @@ const BusinessContext = () => {
             {editorView ? <Sidebar titles={example_structure[components[2]]} groups={components_wo_in} proper={proper_components} isEditor={true} /> : <Sidebar groups={components} proper={proper_components} decisions={decision_components} isEditor={false} />}
             <button onClick={handleAdd}> Add Scope Group </button>
             <button onClick={handleView}> Toggle IA/Scope View </button>
-            <button onClick={handlePrint}> Log Contents </button>
+
             <h1 id='business-context'>Business Context</h1>
             {<>
                 {components.map((component, key) => (
-                    <div id={component} className='scope-group-header' style={{ fontWeight: 'bold', fontSize: '16px', border: 'none', fontFamily: 'Times New Roman' }}>
-
+                    <div id={component} className='scope-group-header'>
                         {component != "in_scope" ?
                             <>
                                 <h2>{proper_components[component]}</h2>
@@ -145,19 +93,20 @@ const BusinessContext = () => {
                                 />
                             </>
                             :
-                            !editorView ? <>  <h2>{proper_components[component]}</h2>
+                            !editorView ? <>
+                                <h2>{proper_components[component]}</h2>
                                 {
                                     example_structure[component].map((scope, key) => (
                                         <>
                                             <ScopeGroup
-                                                title={scope.Title}
                                                 value={scope.InScope}
                                                 id={scope.id}
                                                 handleChange={handleChange}
                                                 component="InScope"
                                             />
                                         </>
-                                    ))}
+                                    ))
+                                }
                             </>
                                 : null
                         }
@@ -173,8 +122,6 @@ const BusinessContext = () => {
                 />
             </>
             }
-
-
         </div >
     )
 }

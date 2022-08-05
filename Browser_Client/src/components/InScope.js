@@ -1,8 +1,23 @@
-import { useState } from "react";
 import ScopeGroup from "./ScopeGroup";
-import Sidebar from "./Sidebar";
 import './InScope.css'
 
+// Scope Group Structure
+// var scope_group = {
+//     id: Math.random(),
+//     InScope: {
+//         Title: "Scope Group Title",
+//         Desc: "This is a **markdown** editor",
+//         Objects: [scope_object]
+//     },
+//     Assumptions: "This assumption is tied to the **first scope group**",
+//     Constraints: "This is to the first as well",
+//     Risks: "... and so on",
+//     Dependencies: "The first scope group's dependencies",
+// };
+
+/**
+ * @param props: scopeGroups, editorView, setStructure(), handleAdd(), handleChange()
+ */
 const InScope = (props) => {
     const scope_components = ["InScope", "Constraints", "Assumptions", "Risks", "Dependencies"];
     const decision_components = ["Constraints", "Assumptions", "Risks", "Dependencies"];
@@ -10,10 +25,9 @@ const InScope = (props) => {
     const handleChange = (values) => {
         const index = props.scopeGroups.map((g) => g.id).indexOf(values.id);
         var newGroups = props.scopeGroups;
+
         newGroups[index][values.component] = values.content;
-        if (values.component === "InScope") {
-            newGroups[index].Title = values.title;
-        }
+
         props.setStructure(prev => {
             return {
                 ...prev,
@@ -33,10 +47,9 @@ const InScope = (props) => {
                                     scope_components.map((component, key) => (
                                         <>
                                             {component != "InScope" ? <div className='scope-group-header'>
-                                                {component}
+                                                <h2> {component}</h2>
                                             </div> : null}
                                             <ScopeGroup
-                                                title={group.Title}
                                                 value={group[component]}
                                                 id={group.id}
                                                 handleChange={handleChange}
@@ -45,6 +58,7 @@ const InScope = (props) => {
                                         </>
                                     ))
                                 }
+                                <br /><br />
                             </div>
                         ))
                     }
@@ -63,7 +77,6 @@ const InScope = (props) => {
                                                 group[component] != "" ?
                                                     <li>
                                                         <ScopeGroup
-                                                            title={group.Title}
                                                             value={group[component]}
                                                             id={group.id}
                                                             handleChange={handleChange}
