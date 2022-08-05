@@ -1,10 +1,9 @@
-import { initConfig   } from "./Config.js";
+import config from "./Config.js";
 import { initDepot, get, update, create } from './Depot.js';
 
-const initApp = async () => {
+const initApp = async (config) => {
   try {
-    const config        = initConfig();
-    config.STORAGE_INFO = await initDepot( config.APP_VERSION );
+    config.Depot = await initDepot( config.Application.version );
     return config;
   } catch ( error ) {
     console.log( `Error: ${error}` );
@@ -12,7 +11,7 @@ const initApp = async () => {
   }
 };
 
-const CONFIG = initApp();
+const CONFIG = initApp( config );
 CONFIG.then( console.log );
 
 //(function wait () { { console.log( 'Waiting...' + CONFIG ) ; setTimeout( wait, 1000 ) }} )();
