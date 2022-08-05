@@ -1,4 +1,4 @@
-import { validate } from './Schema.js';
+import { validate } from './_schema.js';
 
 import { application } from './Fixtures/Application.js';
 import { project } from './Fixtures/Project.js';
