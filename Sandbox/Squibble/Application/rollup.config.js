@@ -4,7 +4,7 @@ import eslint from '@rollup/plugin-eslint';
 export default {
   input: 'app.js',
   output: {
-    file: './build/main.js',
+    file: './_build/main.js',
     format: 'es',
     sourcemap: 'inline'
   },

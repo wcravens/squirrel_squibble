@@ -1,4 +1,4 @@
-import PACKAGE  from '../package.json';
+import PACKAGE  from './package.json';
 // Note: package.json is supplemented via rollup git-info plugin.
 
 export const initConfig = () => ({

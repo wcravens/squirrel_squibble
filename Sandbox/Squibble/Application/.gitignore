@@ -1,5 +1,5 @@
 # Project
 scratch.js
-build
-data
-dist
+_build
+_data
+_dist
