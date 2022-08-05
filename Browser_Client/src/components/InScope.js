@@ -4,14 +4,10 @@ import Sidebar from "./Sidebar";
 import './InScope.css'
 
 const InScope = (props) => {
-    const scope_components = ["InScope", "Assumptions", "Constraints", "Risks", "Dependencies"];
-    const decision_components = ["Assumptions", "Constraints", "Risks", "Dependencies"];
-
-    // const [groups, setGroups] = useState([scope_group, scope_group2, scope_group3, scope_group4]);
-    // const [groups, setGroups] = useState(props.scopeGroups);
+    const scope_components = ["InScope", "Constraints", "Assumptions", "Risks", "Dependencies"];
+    const decision_components = ["Constraints", "Assumptions", "Risks", "Dependencies"];
 
     const handleChange = (values) => {
-
         const index = props.scopeGroups.map((g) => g.id).indexOf(values.id);
         var newGroups = props.scopeGroups;
         newGroups[index][values.component] = values.content;
@@ -24,25 +20,19 @@ const InScope = (props) => {
                 in_scope: newGroups,
             }
         })
-        // props.handleChange(values);
-        // console.log(groups);
     }
 
     return (
-        <div id="outer-container">
-
-
+        <div>
             {props.editorView ?
-                <div id="page-wrapper">
-
-                    {/* <h1>Scope Group Editor</h1> */}
+                <div>
                     {
                         props.scopeGroups.map((group, key) => (
                             <div id={group.id}>
                                 {
                                     scope_components.map((component, key) => (
                                         <>
-                                            {component != "InScope" ? <div className='scope-group-header' style={{ fontWeight: 'bold', fontSize: '24px', border: 'none', fontFamily: 'Times New Roman' }}>
+                                            {component != "InScope" ? <div className='scope-group-header'>
                                                 {component}
                                             </div> : null}
                                             <ScopeGroup
@@ -55,19 +45,15 @@ const InScope = (props) => {
                                         </>
                                     ))
                                 }
-                                <br /><br />
                             </div>
                         ))
-
                     }
-
                 </div>
                 : <>
-                    {/* <h1>IA View</h1> */}
-                    {
+                    { // IA View
                         decision_components.map((component, key) => (
                             <div id={component}>
-                                <div className='scope-group-header' style={{ fontWeight: 'bold', fontSize: '16px', border: 'none', fontFamily: 'Times New Roman' }}>
+                                <div className='scope-group-header'>
                                     <h2>{component}</h2>
                                 </div>
                                 {
@@ -94,8 +80,7 @@ const InScope = (props) => {
                     }
                 </>
             }
-        </div>
-
+        </div >
     )
 }
 

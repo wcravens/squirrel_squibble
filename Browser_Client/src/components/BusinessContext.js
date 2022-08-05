@@ -5,15 +5,19 @@ import ScopeGroup from './ScopeGroup';
 import custom from './theme';
 import Sidebar from './Sidebar';
 
-const proper_components = { objectives: "Objectives", background: "Background", in_scope: "In Scope", out_of_scope: "Out Of Scope", separately_specified_scope: "Separately Specified Scope" };
+const proper_components = { objectives: "Objectives", background: "Background", in_scope: "In-Scope", out_of_scope: "Out-of-Scope", separately_specified_scope: "Separately Specified Scope" };
 const components = ["objectives", "background", "in_scope", "out_of_scope", "separately_specified_scope"];
 const components_wo_in = ["objectives", "background", "out_of_scope", "separately_specified_scope"];
 const decision_components = ["Assumptions", "Constraints", "Risks", "Dependencies"];
 
+var scope_object = {
+
+}
+
 var scope_group = {
     id: Math.random(),
-    Title: "This Is an Editable Title",
-    InScope: "This is a **markdown** editor\n - and a list\n - and another point",
+    Title: "Scope Group Title",
+    InScope: "This is a **markdown** editor",
     Assumptions: "This assumption is tied to the **first scope group**",
     Constraints: "This is to the first as well",
     Risks: "... and so on",
@@ -22,8 +26,8 @@ var scope_group = {
 
 var scope_group2 = {
     id: Math.random(),
-    Title: "This is also a title",
-    InScope: "- this describes the group\n - and various factors \n\t - and can be nested",
+    Title: "Scope Group Title 2",
+    InScope: "- Scope object \n\t - child point",
     Assumptions: "And this is tied to the **second scope group**",
     Constraints: "And this to the second",
     Risks: "*... on and on*",
@@ -32,12 +36,20 @@ var scope_group2 = {
 
 const BusinessContext = () => {
 
+    // const [example_structure, setStructure] = useState({
+    //     objectives: "- This is the list\n- Of objectives",
+    //     background: "Paragraph for background",
+    //     in_scope: [scope_group, scope_group2],
+    //     out_of_scope: "- Another list\n- With multiple items",
+    //     separately_specified_scope: "The separately specified scope's contents",
+    // })
+
     const [example_structure, setStructure] = useState({
-        objectives: "- This is the list\n- Of objectives",
-        background: "Paragraph for background",
+        objectives: "",
+        background: "",
         in_scope: [scope_group, scope_group2],
-        out_of_scope: "- Another list\n- With multiple items",
-        separately_specified_scope: "The separately specified scope's contents",
+        out_of_scope: "",
+        separately_specified_scope: "",
     })
 
     const [editorView, setEditorView] = useState(false);

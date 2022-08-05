@@ -13,6 +13,10 @@ const Template = (args) => <InScope {...args} />;
 
 const lorem_ipsum = "Lorem ipsum dolor sit amet";
 
+const setStructure = (val) => {
+
+}
+
 export const Primary = Template.bind({});
 Primary.args = {
     scopeGroups: [{
@@ -25,5 +29,5 @@ Primary.args = {
         Dependencies: lorem_ipsum,
     }],
     editorView: true,
-    setStructure: {},
+    setStructure: setStructure,
 };
