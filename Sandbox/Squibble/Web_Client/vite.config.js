@@ -5,8 +5,8 @@ import { createHtmlPlugin } from "vite-plugin-html";
 import config from "../Application/Config.js";
 import eslint from 'vite-plugin-eslint';
 
-const __filename = fileURLToPath( import.meta.url )
-const __dirname = path.dirname( __filename )
+const __filename = fileURLToPath( import.meta.url );
+const __dirname = path.dirname( __filename );
 
 export default defineConfig( async( {command, mode } ) => {
   return {
