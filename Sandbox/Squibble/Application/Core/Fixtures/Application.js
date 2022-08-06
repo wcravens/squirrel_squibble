@@ -1,4 +1,5 @@
 import { entity } from './Entity.js';
+import { nanoid } from 'nanoid';
 
 export const generate = () => ({
   ...entity(),
