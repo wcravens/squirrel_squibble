@@ -3,7 +3,7 @@ import { validate } from './Core/_schema.js';
 import { newEntity } from './Core.js';
 let db = undefined;
 
-export const initDepot = async ( name ) => {
+export const initRepo = async ( name ) => {
   try {
     db = await new PouchDB( "./_data/" + name );
     return await db.info();

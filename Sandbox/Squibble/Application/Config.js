@@ -1,12 +1,11 @@
-import { readFileSync } from 'fs';
-import { execSync } from 'child_process';
+import { produce, createDraft, finishDraft } from 'immer';
 
-const PACKAGE = JSON.parse( readFileSync( './package.json', { encoding: "utf-8" } ) );
+let _CONFIG = finishDraft( createDraft( {} ) );
 
-export default Object.freeze( {
-  Application: {
-    name: PACKAGE.name,
-    version: PACKAGE.version,
-    build_id: execSync( 'git describe', { encoding: "utf-8" } ).trim()
-  }
-} );
+export const Config = () => _CONFIG;
+
+export const addConfig = data => {
+  _CONFIG = produce( _CONFIG, draft => draft = { ...draft, ...data } );
+  return Config();
+};
+

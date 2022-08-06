@@ -1,8 +1,8 @@
 {
-  "name": "Squibble",
-  "version": "0.0.0",
+  "name": "SquibbleApp",
+  "version": "0.0.1",
   "description": "",
-  "main": "app.js",
+  "main": "App.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,6 +19,7 @@
     "ajv": "^8.11.0",
     "ajv-formats": "^2.1.1",
     "eslint": "^8.21.0",
+    "immer": "^9.0.15",
     "lorem-ipsum": "^2.0.8",
     "nanoid": "^4.0.0",
     "pouchdb": "^7.3.0",
