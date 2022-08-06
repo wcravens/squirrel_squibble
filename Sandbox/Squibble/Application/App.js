@@ -1,26 +1,6 @@
 import { Config, addConfig } from "./Config.js";
 import { initRepo, get, update, create } from './Repository.js';
-import { newEntity } from './Core.js';
-import { readFileSync } from "fs";
-import { execSync } from "child_process";
 
-const defaultConfig = () => {
-  addConfig( { Package: JSON.parse( readFileSync( './package.json', { encoding: "utf-8" } ) ) } );
-
-  addConfig({
-    Application: {
-      name:     Config().Package.name,
-      version:  Config().Package.version,
-      build_id: execSync( 'git describe', { encoding: "utf-8" } ).trim()
-    }
-  });
-
-  addConfig({
-    _id: '/Config/' + Config().Application.build_id,
-    resource: '/Config',
-  });
-
-};
 
 export const initApp = async ( config ) => {
   try {
@@ -42,7 +22,6 @@ export const initApp = async ( config ) => {
   }
 };
 
-defaultConfig();
 initApp( Config() )
   .then( _ => {
     console.log( "App initialized." );
