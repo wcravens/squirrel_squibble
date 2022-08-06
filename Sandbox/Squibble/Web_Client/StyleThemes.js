@@ -14,6 +14,7 @@ export const insertStyleElementWithTheme = ( name ) =>
 export const removeAllStyleElementsFromHead = () => document.head.querySelectorAll( 'style' ).forEach( _ => _.remove() );
 
 export const switchTheme = ( name ) => {
+  console.log( "Switching theme to " + name );
   removeAllStyleElementsFromHead();
   insertStyleElementWithTheme( name );
 };
