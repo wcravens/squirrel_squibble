@@ -22,7 +22,8 @@ export default defineConfig( async( {command, mode } ) => {
       } } ) ],
     define: {
       APP_NAME:    config.Application.name,
-      APP_VERSION: config.Application.build_id
+      APP_VERSION: config.Application.version,
+      APP_BUILD:   config.Application.build_id
     },
     resolve: {
       alias: {
@@ -30,5 +31,5 @@ export default defineConfig( async( {command, mode } ) => {
         '~bootswatch': path.resolve( __dirname, 'node_modules/bootswatch' )
       }
     }
-  }
-})
+  };
+});
