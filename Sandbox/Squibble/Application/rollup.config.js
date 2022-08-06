@@ -1,4 +1,3 @@
-import gitInfo from 'rollup-plugin-git-info';
 import eslint from '@rollup/plugin-eslint';
 
 export default {
@@ -9,7 +8,6 @@ export default {
     sourcemap: 'inline'
   },
   plugins: [
-    gitInfo( { commitHashCommand: 'describe', versionFormat: '[commitHash]' } ),
     eslint()
   ]
 };
