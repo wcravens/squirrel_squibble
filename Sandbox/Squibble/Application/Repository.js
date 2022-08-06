@@ -15,6 +15,6 @@ export const initRepo = async ( name ) => {
 
 export const get = (id) => db.get( id );
 
-export const create = obj => db.put( newEntity( obj ) );
+export const create = obj => db.put( obj );
 
 export const update = ( obj, payload ) => db.put( { ...obj, ...payload } );
