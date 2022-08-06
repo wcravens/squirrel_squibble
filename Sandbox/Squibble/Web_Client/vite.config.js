@@ -16,15 +16,11 @@ export default defineConfig( async( {command, mode } ) => {
       eslint(),
       createHtmlPlugin( { inject: {
         data: {
-          title: config.Application.name,
-          version: config.Application.version
+          appName:    config.Application.name,
+          appVersion: config.Application.version,
+          appBuild:   config.Application.build_id
         }
       } } ) ],
-    define: {
-      APP_NAME:    config.Application.name,
-      APP_VERSION: config.Application.version,
-      APP_BUILD:   config.Application.build_id
-    },
     resolve: {
       alias: {
         '~bootstrap':  path.resolve( __dirname, 'node_modules/bootstrap' ),
