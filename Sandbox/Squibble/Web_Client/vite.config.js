@@ -1,7 +1,5 @@
-import { defineConfig } from "vite";
-import { loadConfig } from "./loadConfig.js";
-import { createHtmlPlugin } from "vite-plugin-html"
 import * as path from 'path'
+import { defineConfig } from "vite";
 
 export default defineConfig( async( {command, mode } ) => {
   const response = await loadConfig()
