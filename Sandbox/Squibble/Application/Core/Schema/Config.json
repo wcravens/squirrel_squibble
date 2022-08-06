@@ -2,5 +2,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "/Config",
   "type": "object",
-  "$ref": "/Entity"
+  "$ref": "/Entity",
+  "properties": {
+    "Application": {
+      "type": "object",
+      "properties": {
+        "name":     { "type": "string" },
+        "version":  { "type": "string" },
+        "build_id": { "type": "string" }
+      },
+      "required": [ "name", "version", "build_id" ]
+    }
+  },
+  "required": [ "Application" ]
 }

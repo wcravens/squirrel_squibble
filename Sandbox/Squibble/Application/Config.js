@@ -2,21 +2,20 @@ import { produce, createDraft, finishDraft } from 'immer';
 import { readFileSync } from "fs";
 import { execSync } from "child_process";
 
-const defaultConfig = () => {
-  addConfig( { Package: JSON.parse( readFileSync( './package.json', { encoding: "utf-8" } ) ) } );
+export const defaultConfig = () => {
+  const PACKAGE = JSON.parse( readFileSync( './package.json', { encoding: "utf-8" } ) );
+  const buildId = execSync( 'git describe', { encoding: "utf-8" } ).trim();
 
-  addConfig({
-    Application: {
-      name:     Config().Package.name,
-      version:  Config().Package.version,
-      build_id: execSync( 'git describe', { encoding: "utf-8" } ).trim()
-    }
-  });
-
-  addConfig({
-    _id: '/Config/' + Config().Application.build_id,
+  return {
+    _id: '/Config/' + buildId,
     resource: '/Config',
-  });
+    Package: PACKAGE,
+    Application: {
+      name: PACKAGE.name,
+      version: PACKAGE.version,
+      build_id: buildId
+    }
+  };
 };
 
 export const Config = () => _CONFIG;
@@ -27,4 +26,4 @@ export const addConfig = data => {
 };
 
 let _CONFIG = finishDraft( createDraft( {} ) );
-defaultConfig();
+addConfig( defaultConfig() );
