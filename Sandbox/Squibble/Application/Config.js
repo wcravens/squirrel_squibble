@@ -3,7 +3,8 @@ import PACKAGE  from './package.json';
 
 export default ({
   Application: {
-    Name: PACKAGE.name,
-    Version: PACKAGE.version
+    name: PACKAGE.name,
+    version: PACKAGE.version,
+    build_id: 531913113
   }
 });
