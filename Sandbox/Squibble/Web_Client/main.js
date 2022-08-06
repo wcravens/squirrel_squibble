@@ -1,5 +1,6 @@
-import javascriptLogo from './javascript.svg'
-import bootstrap   from 'bootstrap/dist/js/bootstrap'
+import javascriptLogo from './javascript.svg';
+import bootstrap   from 'bootstrap/dist/js/bootstrap';
+
 import {
   insertStyleElementWithTheme,
   listAvailableThemes,
@@ -7,7 +8,7 @@ import {
   switchTheme
 } from "./StyleThemes.js";
 
-insertStyleElementWithTheme( 'Bootstrap' )
+insertStyleElementWithTheme( 'Bootstrap' );
 //switchTheme( 'Sketchy'  )
 
 document.querySelector('#app').innerHTML = `
@@ -23,5 +24,5 @@ document.querySelector('#app').innerHTML = `
       Click on the Vite logo to learn more
     </p>
   </div>
-`
+`;
 
