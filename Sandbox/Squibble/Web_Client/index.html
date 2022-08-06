@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= APP_NAME %></title>
+    <title> <%= `${appName} ${appBuild}` %> </title>
+    <script type="module" src="main.js"></script>
   </head>
-  <body>
-    <div id="app"></div>
-    <div id="footer"><footer> <%= [APP_NAME, APP_VERSION].join(' ')  %></footer></div>
-    <script type="module" src="/main.js"></script>
+  <body class="d-flex flex-column h-100">
+  <div id="app"></div>
+  <footer class="fixed-bottom bg-light py-2 px-2 d-flex justify-content-between">
+    <span>Status...</span>
+    <span class="text-muted"><%= appBuild %></span>
+  </footer>
   </body>
 </html>
