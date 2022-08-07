@@ -1,8 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id":         "/_id",
+  "$id":         "/Id",
   "title":       "Simple format for our Entity Ids.",
-  "description": "",
+  "description": "We are using nanoid() to generate.",
   "type": "string",
-  "minLength": 16
+  "pattern": "^/.*/[A-Za-z0-9_-]{21}$",
+  "minLength": 21
 }

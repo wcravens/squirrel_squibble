@@ -2,16 +2,16 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id":         "/Entity",
   "title":       "Decorator Properties to convert data structures into entities.",
-  "description": "At a minimum a unique ID must be association with a data structure to classify as an entity.",
+  "description": "At a minimum a unique ID must be associated with a data structure to classify as an entity.",
   "type": "object",
   "properties": {
-    "_id":        { "$ref": "/_id" },
+    "_id":        { "$ref": "/Id" },
     "resource":      {
       "type": "string",
-      "enum": [ "/Application", "/Project", "/Ticket", "/User", "/Action" ]
+      "enum": [ "/Project", "/User"  ]
     },
     "created_on": { "type": "string" },
     "updated_on": { "type": "string" }
   },
-  "required": ["_id", "resource", "created_on" ]
+  "required": ["_id", "resource", "created_on", "updated_on" ]
 }
