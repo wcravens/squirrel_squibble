@@ -1,22 +1,17 @@
 import { produce, createDraft, finishDraft } from 'immer';
-import { readFileSync } from "fs";
-import { execSync } from "child_process";
+import PACKAGE from './package.json';
+import { build_id } from './build_id.json';
 
-export const defaultConfig = () => {
-  const PACKAGE = JSON.parse( readFileSync( './package.json', { encoding: "utf-8" } ) );
-  const buildId = execSync( 'git describe', { encoding: "utf-8" } ).trim();
-
-  return {
-    _id: '/Config/' + buildId,
-    resource: '/Config',
-    Package: PACKAGE,
-    Application: {
-      name: PACKAGE.name,
-      version: PACKAGE.version,
-      build_id: buildId
-    }
-  };
-};
+export const defaultConfig = () => ({
+  _id: '/Config/' + build_id,
+  resource: '/Config',
+  Package: PACKAGE,
+  Application: {
+    name: PACKAGE.name,
+    version: PACKAGE.version,
+    build_id: build_id
+  }
+});
 
 export const Config = () => _CONFIG;
 
