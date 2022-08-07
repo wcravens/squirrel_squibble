@@ -11,7 +11,6 @@ const _entityFields = ( resource ) => ({
 
 export const newEntity = obj => {
   const newObj = { ...obj,  ..._entityFields( obj.resource ) };
-  console.log( newObj );
   return ( validate( newObj ) )
     ? newObj
     : undefined;
