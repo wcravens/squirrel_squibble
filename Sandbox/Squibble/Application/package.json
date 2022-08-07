@@ -28,6 +28,7 @@
     "lorem-ipsum": "^2.0.8",
     "nanoid": "^4.0.0",
     "pouchdb": "^7.3.0",
+    "pouchdb-browser": "^7.3.0",
     "redux-batched-subscribe": "^0.1.6",
     "redux-logger": "^3.0.6",
     "rollup": "^2.77.2",
