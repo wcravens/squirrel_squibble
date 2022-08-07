@@ -3,15 +3,19 @@ import { nanoid } from 'nanoid';
 
 export const hydrate = obj => validate( obj ) ? obj : undefined;
 
-const _entityFields = ( resource ) => ({
-  _id: resource + '/' + nanoid(),
-  resource,
-  created_on: new Date().toISOString()
-});
+const _entityFields = ( resource ) => {
+  const date = new Date().toISOString();
+  return {
+    _id: resource + '/' + nanoid(),
+    created_on: date,
+    updated_on: date
+  };
+};
 
 export const newEntity = obj => {
   const newObj = { ...obj,  ..._entityFields( obj.resource ) };
-  return ( validate( newObj ) )
+  const result = validate( newObj );
+  return ( result === true )
     ? newObj
-    : undefined;
+    : console.log( result );
 };

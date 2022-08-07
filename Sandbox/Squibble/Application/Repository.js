@@ -1,7 +1,5 @@
-import PouchDB from 'pouchdb-browser';
+import PouchDB from 'pouchdb';
 import { validate } from './Core/_schema.js';
-import { newEntity } from './Core.js';
-import events from 'events';
 
 let db = undefined;
 
@@ -15,7 +13,7 @@ export const initRepo = async ( name ) => {
   }
 };
 
-export const get = (id) => db.get( id );
+export const getById = ( id ) => db.get( id );
 
 export const create = obj => db.put( obj );
 
