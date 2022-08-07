@@ -9,14 +9,13 @@
     "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2020,
     "sourceType": "module"
   },
-  "ignorePatterns": ["package.json"],
+  "ignorePatterns": [ "package.json", "*.json" ],
   "rules": {
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
-    //"quotes": ["error", "single"],
     "semi": ["error", "always"],
     "no-unused-vars": ["off"]
   }
