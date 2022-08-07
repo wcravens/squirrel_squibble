@@ -8,15 +8,21 @@
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2020,
-    "sourceType": "module"
+    "sourceType": "module",
+    "requireConfigFile": false,
+    "babelOptions": {
+      "plugins": [
+        "@babel/plugin-syntax-import-assertions"
+      ]
+    }
   },
-  "ignorePatterns": ["package.json"],
+  "ignorePatterns": ["package.json", "*.json" ],
   "rules": {
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
-    //"quotes": ["error", "single"],
     "semi": ["error", "always"],
     "no-unused-vars": ["off"]
   }

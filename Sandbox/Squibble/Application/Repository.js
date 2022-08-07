@@ -1,4 +1,4 @@
-import PouchDB from 'pouchdb';
+import PouchDB from 'pouchdb-browser';
 import { validate } from './Core/_schema.js';
 import { newEntity } from './Core.js';
 let db = undefined;

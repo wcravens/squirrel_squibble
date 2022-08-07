@@ -33,4 +33,4 @@ export const initApp = () =>
 
 //(function wait () { { console.log( 'Waiting...' + CONFIG ) ; setTimeout( wait, 1000 ) }} )();
 
-initApp().then( console.log );
+

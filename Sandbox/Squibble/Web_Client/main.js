@@ -1,6 +1,6 @@
 import javascriptLogo from './javascript.svg';
 import bootstrap   from 'bootstrap/dist/js/bootstrap';
-
+import { initApp } from '../Application/App.js';
 import {
   insertStyleElementWithTheme,
   listAvailableThemes,
@@ -10,3 +10,7 @@ import {
 
 insertStyleElementWithTheme( 'Bootstrap' );
 //switchTheme( 'Sketchy'  );
+
+initApp().then( console.log );
+
+var global = window;
