@@ -14,7 +14,7 @@ export default defineConfig( async( {command, mode } ) => {
     root: path.resolve(__dirname, '.'),
     server: { port: 8080, hot: true },
     plugins: [
-      //eslint(),
+      eslint(),
       createHtmlPlugin( { inject: {
         data: {
           appName:    config.Application.name,

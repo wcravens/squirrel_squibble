@@ -7,12 +7,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "rollup": "rollup -cw",
-    "main": "node _build/main.js"
+    "main": "node _build/main.js",
+    "lint": "eslint '**/*.js' --ignore-pattern node_modules/"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/eslint-parser": "^7.18.9",
+    "@babel/plugin-syntax-import-assertions": "^7.18.6",
     "@faker-js/faker": "^7.3.0",
     "@reduxjs/toolkit": "^1.8.3",
     "@rollup/plugin-eslint": "^8.0.2",
