@@ -1,5 +1,5 @@
 import React from 'react';
-function App(){
+function Hello(){
   return <h1>Hello World From React-Rollup</h1>;
 }
-export default App;
+export default Hello;

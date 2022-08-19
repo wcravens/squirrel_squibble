@@ -4,6 +4,6 @@ import { createRoot } from 'react-dom/client';
 const container = document.getElementById( 'root' );
 const root = createRoot( container );
 
-import App from './App.js';
+import Hello from './Hello.js';
 
-root.render( <App /> )
+root.render( <Hello /> )
