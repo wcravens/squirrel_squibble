@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/Project",
+  "type": "object",
+  "$ref": "/Entity",
+  "properties": {
+    "assigned_to": { "type": "string", "pattern":  "^/User/[A-Za-z0-9_-]{21}$" },
+    "ticket_id":   { "type": "string" },
+    "summary":     { "type": "string" },
+    "description": { "type": "string" },
+    "objectives":  { "type": "string", "$comment": "Possibly some rich text." },
+    "components":  { "type": "array", "items" : { "type": "string" } }
+  },
+  "required": ["ticket_id", "summary", "assigned_to" ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "squibble",
+  "Name": "Squibble Application",
+  "version": "0.0.1",
+  "pre_release": "pre-alpha 0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "pouchdb": "^7.3.0",
+    "pubsub-js": "^1.9.4",
+    "ramda": "^0.28.0",
+    "redux-toolkit": "^1.1.2"
+  }
+}

@@ -1,0 +1,15 @@
+# Vim
+*.swp
+*.swo
+
+# Jetbrains
+.idea
+
+# NodeJS
+node_modules
+
+# build
+dist
+
+# Yarn
+yarn-error.log

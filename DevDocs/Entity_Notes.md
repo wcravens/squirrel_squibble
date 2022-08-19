@@ -3,7 +3,15 @@
 Action
 Reduce
 
-CRUD
+## CRUD 
+
+### Verbs
+
+- create
+- update
+- list
+- load
+- delete
 
 ## Core Entities
 Project

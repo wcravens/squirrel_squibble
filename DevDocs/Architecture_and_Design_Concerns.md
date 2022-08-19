@@ -76,7 +76,7 @@ Package by Layer is Horizontal Slicing.  Consider packaging by Component to prov
 
 [Package by Component](http://www.codingthearchitecture.com/2015/03/08/package_by_component_and_architecturally_aligned_testing.html)
 
-After consideration this isn't an idea fit for us.  It's better to have 'ways of doing things' per layer than per slice.
+After consideration this isn't an ideal fit for us.  It's better to have 'ways of doing things' per layer than per slice.
 
 
 [Google Javascript Style Guide](https://google.github.io/styleguide/jsguide.html)\
@@ -94,6 +94,11 @@ We'll use JSON Schema to validate data structures such as Value Objects.
 
 Since Javascript permits it, we should leverage Functional Programming techniques as much as possible.  At a minimum we
 should implement as much functionality as possible in pure functions.
+
+[Ramda](https://ramdajs.com/)
+[Thinking in Ramda](https://randycoulman.com/blog/2016/06/14/thinking-in-ramda-declarative-programming/)
+[Primer on Functional Arcitecture](https://increment.com/software-architecture/primer-on-functional-architecture/)
+[Functional Architecture](https://devonburriss.me/fp-architecture/)
 
 ## Immutability
 
