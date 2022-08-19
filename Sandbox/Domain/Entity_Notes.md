@@ -75,8 +75,4 @@ CoreEntity('type'):
   Augment/Prepare Entity
   Validate Prepared Entity  
 
-
-
-
-
 CREATE
