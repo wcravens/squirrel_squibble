@@ -1,5 +1,6 @@
 # Todo
-- [ ] Rollup a simple react app
+- [ ] Quick UI design from @mui/material
+- [x] Rollup a simple react app
 
 
 ## Itches 
