@@ -5,12 +5,13 @@ import babel from '@rollup/plugin-babel';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
-import externals from 'rollup-plugin-node-externals';
 import del from 'rollup-plugin-delete';
 import eslint from '@rollup/plugin-eslint';
 import pgk from './package.json';
 
-export default {
+const isProduction = false;
+
+export default ( async () => ({
   input: "src/index.js",
   output: {
     file: "dist/bundle.js",
@@ -27,7 +28,6 @@ export default {
   },
   plugins: [
     del( { targets: "dist/*" } ),
-    //externals( { deps: true } ),
     nodeResolve({
       extensions: [".js"],
     }),
@@ -43,6 +43,7 @@ export default {
       babelHelpers: 'runtime'
     }),
     commonjs(),
+    isProduction && (await import('rollup-plugin-terser')).terser(),
     serve({
       open: true,
       verbose: true,
@@ -51,4 +52,4 @@ export default {
     }),
     livereload({ watch: "dist" }),
   ]
-};
+}))();
