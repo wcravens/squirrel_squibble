@@ -1,4 +1,7 @@
 # Todo
+- [ ] Integrate applications
+  - [ ] app-webpack-from-scratch has a theme switcher and the git describe for build_id
+- [ ] React theme Switcher
 - [ ] Dynamic Input Component
   - [x] Add Input
   - [x] Add id to Input
