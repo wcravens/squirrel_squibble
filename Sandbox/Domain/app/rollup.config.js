@@ -1,10 +1,13 @@
-import serve from "rollup-plugin-serve";
-import livereload from "rollup-plugin-livereload";
+import serve from 'rollup-plugin-serve';
+import livereload from 'rollup-plugin-livereload';
 import babel from '@rollup/plugin-babel';
-import babelHelpers from '@babel/plugin-transform-runtime';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
+import externals from 'rollup-plugin-node-externals';
+import del from 'rollup-plugin-delete';
+import pgk from './package.json';
+
 export default {
   input: "src/index.js",
   output: {
@@ -17,6 +20,8 @@ export default {
     warn(warning);
   },
   plugins: [
+    del( { targets: "dist/*" } ),
+    externals( { deps: true } ),
     nodeResolve({
       extensions: [".js"],
     }),
@@ -26,6 +31,7 @@ export default {
     }),
     babel({
       env: { development: { compact: false } },
+      exclude: "**/node_modules/**",
       presets: ["@babel/preset-react"],
       babelHelpers: 'runtime'
     }),
