@@ -1,8 +1,7 @@
-import webpack                from 'webpack'
-import PACKAGE                from './package.json' assert { type: 'json' }
-import { GitRevisionPlugin }  from 'git-revision-webpack-plugin'
-import HtmlWebpackPlugin      from 'html-webpack-plugin'
-
+const webpack = require('webpack');
+const PACKAGE = require('./package.json')
+const { GitRevisionPlugin } = require('git-revision-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const gitRevisionPlugin = new GitRevisionPlugin( {
   branch: true,
