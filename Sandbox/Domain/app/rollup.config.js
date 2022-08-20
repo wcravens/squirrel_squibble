@@ -1,3 +1,4 @@
+import path from 'path';
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
 import babel from '@rollup/plugin-babel';
@@ -14,7 +15,11 @@ export default {
   output: {
     file: "dist/bundle.js",
     format: "iife",
-    sourcemap: true
+    sourcemapPathTransform: (relativeSourcePath, sourcemapPath) => {
+      // will replace relative paths with absolute paths
+      return path.resolve(path.dirname(sourcemapPath), relativeSourcePath);
+    },
+    sourcemap: true,
   },
   onwarn(warning, warn) {
     if (warning.code === 'THIS_IS_UNDEFINED') return;
@@ -41,7 +46,6 @@ export default {
     serve({
       open: true,
       verbose: true,
-      contentBase: [""],
       host: "localhost",
       port: 3000,
     }),

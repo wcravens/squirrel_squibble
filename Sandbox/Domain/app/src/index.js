@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { createRoot } from 'react-dom/client';
+import Root from './Root.js';
 
 const container = document.getElementById( 'root' );
 const root = createRoot( container );
 
-import Hello from './Hello.js';
-
-root.render( <Hello /> );
+root.render( <Root /> );
