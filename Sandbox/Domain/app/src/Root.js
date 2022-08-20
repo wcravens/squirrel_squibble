@@ -7,8 +7,10 @@ const Root = ( props ) => {
   return (
     <div>
       <HotKeys />
-      <h2>Root World From React-Rollup</h2>
+      <h1>IAAT</h1>
+      <h2>SimpleInput</h2>
       <SimpleInput content={"Root, World!" }/>
+      <h2>ContentEditable</h2>
       <ContentEditable html={ "Root, world!" } onChange={ _ => console.log( _.target.value ) } tagName={'article'} />
     </div>
   );
