@@ -21,7 +21,7 @@ export default {
   },
   plugins: [
     del( { targets: "dist/*" } ),
-    externals( { deps: true } ),
+    //externals( { deps: true } ),
     nodeResolve({
       extensions: [".js"],
     }),
