@@ -10,9 +10,7 @@ const SimpleInput = (props) => {
     console.log( message );
   };
 
-  return (
-    <input placeholder="Footastic..." onChange={ handleChange } value={message} id={props.id}/>
-  )
+  return ( <input placeholder="Footastic..." onChange={ handleChange } value={message} id={props.id}/> );
 };
 
 

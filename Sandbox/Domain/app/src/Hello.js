@@ -1,6 +1,6 @@
 import React from 'react';
 import SimpleInput from "./SimpleInput";
-import { nanoid } from '@reduxjs/toolkit'
+import { nanoid } from '@reduxjs/toolkit';
 
 const Hello = () => (
   <div>

@@ -6,4 +6,4 @@ const root = createRoot( container );
 
 import Hello from './Hello.js';
 
-root.render( <Hello /> )
+root.render( <Hello /> );
