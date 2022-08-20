@@ -6,6 +6,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
 import externals from 'rollup-plugin-node-externals';
 import del from 'rollup-plugin-delete';
+import eslint from '@rollup/plugin-eslint';
 import pgk from './package.json';
 
 export default {
@@ -29,6 +30,7 @@ export default {
       preventAssignment: true,
       'process.env.NODE_ENV': JSON.stringify( 'development' )
     }),
+    eslint(),
     babel({
       env: { development: { compact: false } },
       exclude: "**/node_modules/**",
