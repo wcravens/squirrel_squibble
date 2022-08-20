@@ -1,12 +1,12 @@
 import { Config, addConfig, defaultConfig } from "./Config.js";
-import { initRepo, get, update, create } from './Repository.js';
+import { initRepo, getById, update, create } from './Repository.js';
 
 export const _initApp = async () => {
   const config = Config();
   try {
     const db_info = await initRepo( config.Application.build_id );
     addConfig( { Repo: db_info } );
-    const priorConfig = await get( '/Config/' + config.Application.build_id );
+    const priorConfig = await getById( '/Config/' + config.Application.build_id );
     addConfig( { ...priorConfig, updated_on: new Date().toISOString() } );
     const response = await update( Config() );
     addConfig( { rev: response.rev } );
