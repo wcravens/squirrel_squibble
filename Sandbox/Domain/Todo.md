@@ -10,7 +10,8 @@
   - [ ] Throttle/Debounce change event to every 250ms
     - https://stackoverflow.com/questions/38256332/in-react-whats-the-difference-between-onchange-and-oninput
 - [x] Rollup a simple react app
-
+- [ ] Rollup with pouchdb.
+- [ ] Read up on monorepo
 
 ## Itches 
 - [ ] index.html is not captured with livereload.
