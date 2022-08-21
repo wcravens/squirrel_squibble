@@ -14,11 +14,7 @@ export default ( async () => ({
   input: "src/index.js",
   output: {
     file: "dist/bundle.js",
-    format: "iife",
-    sourcemapPathTransform: (relativeSourcePath, sourcemapPath) => {
-      // will replace relative paths with absolute paths
-      return path.resolve(path.dirname(sourcemapPath), relativeSourcePath);
-    },
+    format: "es",
     sourcemap: true,
   },
   onwarn(warning, warn) {
