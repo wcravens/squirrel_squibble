@@ -10,5 +10,7 @@
   ],
   "plugins": [
     [ "@babel/plugin-transform-runtime", { "corejs": 3 } ]
-  ]
+  ],
+  "env": { "development": { "compact": false } },
+  "exclude": "**/node_modules/**"
 }

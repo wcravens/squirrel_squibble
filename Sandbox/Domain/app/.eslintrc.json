@@ -12,12 +12,7 @@
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
-    "requireConfigFile": false,
-    "babelOptions": {
-      "plugins": [
-        "@babel/plugin-syntax-import-assertions"
-      ]
-    }
+    "requireConfigFile": false
   },
   "ignorePatterns": ["package.json", "*.json" ],
   "rules": {
