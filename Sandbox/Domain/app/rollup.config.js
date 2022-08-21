@@ -13,7 +13,7 @@ const isProduction = false;
 export default ( async () => ({
   input: "src/index.js",
   output: {
-    file: "dist/bundle.js",
+    file: "_build/bundle.js",
     format: "es",
     sourcemap: true,
   },
