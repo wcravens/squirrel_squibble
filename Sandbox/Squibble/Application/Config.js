@@ -1,6 +1,6 @@
 import { produce, createDraft, finishDraft } from 'immer';
-import PACKAGE from './package.json' assert { type: 'json' };
-import build_id from './build_id.json' assert { type: 'json' };
+import build_id from './build_id.json';
+import PACKAGE  from './package.json';
 
 export const defaultConfig = () => ({
   _id: '/Config/' + build_id,
