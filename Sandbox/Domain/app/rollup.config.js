@@ -5,7 +5,6 @@ import babel from '@rollup/plugin-babel';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
-import del from 'rollup-plugin-delete';
 import eslint from '@rollup/plugin-eslint';
 import pgk from './package.json';
 
@@ -27,7 +26,6 @@ export default ( async () => ({
     warn(warning);
   },
   plugins: [
-    del( { targets: "dist/*" } ),
     nodeResolve({
       extensions: [".js"],
     }),
