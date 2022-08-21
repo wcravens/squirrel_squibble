@@ -14,6 +14,7 @@
 - [ ] Rollup with pouchdb.
 - [ ] Read up on monorepo
 - [ ] Wire up istanbul test coverage instrumentation
+- [ ] JSDOM
  
 ## Itches 
 - [ ] index.html is not captured with livereload.
