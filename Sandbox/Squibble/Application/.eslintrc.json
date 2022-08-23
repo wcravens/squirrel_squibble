@@ -13,7 +13,11 @@
     "ecmaVersion": 2020,
     "sourceType": "module",
     "requireConfigFile": false,
-    "babelOptions": {}
+    "babelOptions": {
+      "plugins": [
+        "@babel/plugin-syntax-import-assertions"
+      ]
+    }
   },
   "ignorePatterns": [ "package.json", "*.json", "_build" ],
   "rules": {
