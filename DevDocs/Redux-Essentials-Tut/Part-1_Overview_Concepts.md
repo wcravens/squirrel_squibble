@@ -122,4 +122,4 @@ console.log( currentValue )
   - Each component that sees its data has changed forces a re-render with the new data, so it can update what's shown on the screen.
   -
 <style>img { width: 62% } </style>
-![Redux Data-Flow Diagram](./redux_data_flow_diagram.gif)
+![Redux Data-Flow Diagram](redux_data_flow_diagram.gif)

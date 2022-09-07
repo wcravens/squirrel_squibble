@@ -32,7 +32,7 @@ They extend the store, and allow you to:
 
 
 <style>img { width: 62% } </style>
-![Redux Async Data-Flow Diagram](./ReduxAsyncDataFlowDiagram.gif)
+![Redux Async Data-Flow Diagram](ReduxAsyncDataFlowDiagram.gif)
 
 ### Thunk Functions
 
